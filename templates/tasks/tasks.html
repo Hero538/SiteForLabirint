@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="headline"><h2>решение задачи на <h2></div>
+			<div class="vars"><h3>что дано?<h3></div>
+			<form>
+				<p><select name="variables">
+					<option selected value="v1">F</option>
+					<option value="v2">m</option>
+					<option value="v3">a</option>
+				</select>
+			</form>
+			<div class="vars"><h3>что найти?<h3></div>
+				<form>
+				<p><select name="outs">
+					<option selected value="v1">F</option>
+					<option value="v2">m</option>
+					<option value="v3">a</option>
+				</select>
+				</form>
+				<form>
+					<input type="text" placeholder="сколько?">
+					<button type="submit">ок</button>
+				</form>
+				<div class="colution"><h3>Решение</h3></div>
+				<div>будет скрипт с решением</div>
+{% endblock %}
