@@ -12,20 +12,20 @@ def register(request):
         password2 = request.POST['password2']
         if password == password2:
             if User.objects.filter(username=username).exists():
-                messages.error(request, 'That username is taken')
+                messages.error(request, 'Это имя занято')
                 return redirect('register')
             else:
                 if User.objects.filter(email=email).exists():
-                    messages.error(request, 'That email is being used')
+                    messages.error(request, 'Эта почта уже используется')
                 else:
                     user = User.objects.create_user(username=username, password=password, email=email,first_name=first_name, last_name=last_name)
                     user.save()
-                    messages.success(request, 'You are now registered and can login')
+                    messages.success(request, 'Теперь вы зарегистрированы и можете войти')
                     return redirect('login')
 
 
         else:
-            messages.error(request, 'Passwords do not match')
+            messages.error(request, 'Пароли не совпадают')
             return redirect('register')
     else:
         return render(request, 'accounts/register.html')
@@ -36,10 +36,10 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            messages.success(request, 'You are now logged in!')
+            messages.success(request, 'Вы вошли!')
             return redirect('index')
         else:
-            messages.error(request, 'Wrong credentials')
+            messages.error(request, 'Неверные данные')
             return redirect('login')
 
     else:
