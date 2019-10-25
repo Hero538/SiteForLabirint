@@ -17,13 +17,24 @@ def taskss(request):
             messages.error(request, 'Неверные данные')
             return redirect('tasks') #почему таскс? потому что я дебил дурак боюсь менять переменную
         if varfind in main_variables:
-            tasks=varcount*varcount2
+            try:
+                tasks=varcount//varcount2
+            except (ZeroDivisionError, TypeError, NameError):
+                messages.error(request, 'Неверные данные')
+            tasks=varcount//varcount2
         else:
             if varname in main_variables:
+                try:
+                    tasks=varcount//varcount2
+                except (ZeroDivisionError, TypeError, NameError):
+                    messages.error(request, 'Неверные данные')
                 tasks=varcount//varcount2
             else:
-                tasks=varcount2//varcount
-    
+                try:
+                    tasks=varcount//varcount2
+                except (ZeroDivisionError, TypeError, NameError):
+                    messages.error(request, 'Неверные данные')
+                tasks=varcount//varcount2
         if tasks is not None:
             return render(request, 'tasks.html', {'tasks': tasks})
         else:
