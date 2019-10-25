@@ -31,10 +31,10 @@ def taskss(request):
                 tasks=varcount//varcount2
             else:
                 try:
-                    tasks=varcoun2//varcount
+                    tasks=varcount2//varcount
                 except (ZeroDivisionError, TypeError, NameError):
                     messages.error(request, 'Неверные данные')
-                tasks=varcount//varcount2
+                tasks=varcount2//varcount
         if tasks is not None:
             return render(request, 'tasks.html', {'tasks': tasks})
         else:
