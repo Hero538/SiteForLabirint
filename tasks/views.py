@@ -21,7 +21,7 @@ def taskss(request):
                 tasks=varcount//varcount2
             except (ZeroDivisionError, TypeError, NameError):
                 messages.error(request, 'Неверные данные')
-            tasks=varcount//varcount2
+            tasks=varcount*varcount2
         else:
             if varname in main_variables:
                 try:
@@ -31,7 +31,7 @@ def taskss(request):
                 tasks=varcount//varcount2
             else:
                 try:
-                    tasks=varcount//varcount2
+                    tasks=varcoun2//varcount
                 except (ZeroDivisionError, TypeError, NameError):
                     messages.error(request, 'Неверные данные')
                 tasks=varcount//varcount2
