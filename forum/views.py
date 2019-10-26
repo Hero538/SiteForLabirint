@@ -34,5 +34,5 @@ def add(request):
         return render(request, 'forum/create.html')
 
 def details(request,post_id):
-    details = get_object_or_404(Post,pk=post_id)
-    return render(request,'forum/details.html',{'details':details})
+    post = get_object_or_404(Post,pk=post_id)
+    return render(request,'forum/details.html',{'post':post})
