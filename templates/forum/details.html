@@ -14,7 +14,7 @@
     <img src="{{ post.title }}" class="img-fluid"  />
   </div>
   <div class="col-4">
-    <a href="javascript:{document.getElementById('upvote').submit()}"><button class="btn btn-primary btn-lg btn-block"><i class="fas fa-arrow-up"></i><i class="fas fa-arrow-down"></i><span class="oi oi-caret-top"></span> Upvote {{ product.votes_total }}</button></a>
+    <a href="javascript:{document.getElementById('upvote').submit()}"><i class="fas fa-arrow-up"></i></a>{{ post.votes_total }}<a href="javascript:{document.getElementById('downvote').submit()}"><i class="fas fa-arrow-down"></i><span class="oi oi-caret-top"></a>
   </div>
 </div>
 
@@ -32,9 +32,12 @@
     <p>{{ post.body }}</p>
   </div>
 </div>
-
-{#<form id="upvote" method="POST" action="{% url 'upvote' post.id %}">#}
-{#  {% csrf_token%}#}
-{#  <input type="hidden">#}
-{#</form>#}
+<form id="upvote" method="POST" action="{% url 'upvote' post.id %}">
+  {% csrf_token%}
+  <input type="hidden">
+</form>
+ <form id="downvote" method="POST" action="{% url 'downvote' post.id %}">
+  {% csrf_token%}
+  <input type="hidden">
+</form>
 {% endblock %}

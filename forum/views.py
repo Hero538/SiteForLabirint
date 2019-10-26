@@ -1,12 +1,13 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.utils import timezone
 from .models import Post
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def forum(request):
     posts= Post.objects.order_by('-pub_date').filter(is_published=True)
     return render(request,'forum/forum.html',{'posts':posts})
 
-
+@login_required(login_url='/accounts/signup')
 def add(request):
     if request.method == 'POST':
         if request.POST['title'] and request.POST['body']:
@@ -36,3 +37,19 @@ def add(request):
 def details(request,post_id):
     post = get_object_or_404(Post,pk=post_id)
     return render(request,'forum/details.html',{'post':post})
+
+@login_required(login_url='/accounts/signup')
+def upvote(request,post_id):
+    if request.method == 'POST':
+        post = get_object_or_404(Post,pk=post_id)
+        post.votes_total +=1
+        post.save()
+        return redirect('/forum/' + str(post_id))
+
+@login_required(login_url='/accounts/signup')
+def downvote(request,post_id):
+    if request.method == 'POST':
+        post = get_object_or_404(Post,pk=post_id)
+        post.votes_total -=1
+        post.save()
+        return redirect('/forum/' + str(post_id))
