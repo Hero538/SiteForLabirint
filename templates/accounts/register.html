@@ -3,25 +3,25 @@
 {% include 'alerts/alert.html' %}
 <form action="{% url 'register' %}" method="POST">
     {% csrf_token %}
-    <div class="form-group"><label for="first_name">First Name</label>
+    <div ><label for="first_name">Имя</label>
         <input type="text" name="first_name" class="form-control" required>
     </div>
-    <div class="form-group"><label for="last_name">Last Name</label><input type="text" name="last_name" class="form-control" required></div><div class="form-group"><label for="username">Username</label>
-                  <input type="text" name="username" class="form-control" required>
+    <div><label for="last_name">Фамилия</label><input type="text" name="last_name" required></div><div ><label for="username">Ник</label>
+                  <input type="text" name="username"  required>
                 </div>
-                <div class="form-group">
+                <div >
                   <label for="email">Email</label>
-                  <input type="email" name="email" class="form-control" required>
+                  <input type="email" name="email"  required>
                 </div>
-                <div class="form-group">
-                  <label for="password2">Password</label>
-                  <input type="password" name="password" class="form-control" required>
+                <div>
+                  <label for="password2">Пароль</label>
+                  <input type="password" name="password"  required>
                 </div>
-                <div class="form-group">
-                  <label for="password">Confirm Password</label>
-                  <input type="password" name="password2" class="form-control" required>
+                <div>
+                  <label for="password">Подтвердите пароль</label>
+                  <input type="password" name="password2" required>
                 </div>
-                <input type="submit" value="Register" class="btn btn-secondary btn-block">
+                <input type="submit" value="Зарегистрироваться" >
               </form>
 
 {% endblock %}

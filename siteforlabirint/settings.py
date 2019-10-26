@@ -20,12 +20,27 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'u%7qh*azubqyc*$kx7yfpd)=%ckg9286!x*^ndu0y126pt4zen'
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'SchoolSiteDb',
+        'USER': 'postgres',
+        'PASSWORD': 'Finecbr007',
+        'HOST' : 'localhost'
+    }
+}
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'forum.apps.ForumConfig',
     'pages.apps.PagesConfig',
     'accounts.apps.AccountsConfig',
     'django.contrib.admin',
@@ -73,10 +88,10 @@ WSGI_APPLICATION = 'siteforlabirint.wsgi.application'
 
 
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
