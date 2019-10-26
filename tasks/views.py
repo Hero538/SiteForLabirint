@@ -15,26 +15,29 @@ def tasks(request):
         varfind= request.POST['varfind'] 
         if varname not in main_variables or varname2 not in main_variables or varfind not in main_variables or varname not in other_vars or varname2 not in other_vars or varfind not in other_vars:
             messages.error(request, 'Неверные данные')
-            return redirect('tasks') #почему таскс? потому что я дебил дурак боюсь менять переменную
+            return redirect('tasks') 
         if varfind in main_variables:
             try:
                 tasks=varcount//varcount2
             except (ZeroDivisionError, TypeError, NameError):
                 messages.error(request, 'Неверные данные')
-            tasks=varcount*varcount2
+            else:
+                tasks=varcount*varcount2
         else:
             if varname in main_variables:
                 try:
                     tasks=varcount//varcount2
                 except (ZeroDivisionError, TypeError, NameError):
                     messages.error(request, 'Неверные данные')
-                tasks=varcount//varcount2
+                else:
+                    tasks=varcount//varcount2
             else:
                 try:
                     tasks=varcount2//varcount
                 except (ZeroDivisionError, TypeError, NameError):
                     messages.error(request, 'Неверные данные')
-                tasks=varcount2//varcount
+                else:
+                    tasks=varcount2//varcount
         if tasks is not None:
             return render(request, 'tasks.html', {'tasks': tasks})
         else:
@@ -42,4 +45,4 @@ def tasks(request):
             return redirect('tasks')
     else:
 
-        return render(request, 'tasks.html', {'tasks': tasks})
+        return render(request, 'tasks.html')

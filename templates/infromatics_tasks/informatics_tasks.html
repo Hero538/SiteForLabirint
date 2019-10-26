@@ -6,10 +6,9 @@
 				<form action="{% url 'some_system'%}" method="POST">
 					{% csrf_token %}
 					<div class="form-group">
-					  <label for="variable">Перевести число в n-ную систему</label>
-					  <label for="variable">Введите число</label> 
+					  <label>Введите число</label> 
 					  <input type="number" name="num" class="" required>
-					  <label for="variable">Какая система?</label> 
+					  <label>Какая система?</label> 
 					  <input type="number" name="n" class="" required>
 					</div>
 					<input type="submit" value="" class="btn btn-secondary btn-block">
