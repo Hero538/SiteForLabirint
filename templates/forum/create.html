@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Создать</h1>
+<h1>Create</h1>
     <form method="POST" action="{% url 'add' %}" enctype="multipart/form-data">
     {% csrf_token %}
         Title:
