@@ -1,26 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
+{% include 'alerts/alert.html' %} 
 <div class="headline"><h2>решение задачи на <h2></div>
 			<div class="vars"><h3>что дано?<h3></div>
-			<form>
-				<p><select name="variables">
-					<option selected value="v1">F</option>
-					<option value="v2">m</option>
-					<option value="v3">a</option>
-				</select>
-			</form>
-			<div class="vars"><h3>что найти?<h3></div>
-				<form>
-				<p><select name="outs">
-					<option selected value="v1">F</option>
-					<option value="v2">m</option>
-					<option value="v3">a</option>
-				</select>
-				</form>
-				<form>
-					<input type="text" placeholder="сколько?">
-					<button type="submit">ок</button>
-				</form>
-				<div class="colution"><h3>Решение</h3></div>
-				<div>будет скрипт с решением</div>
+				<form action="{% url 'tasks'%}" method="POST">
+					{% csrf_token %}
+					<div class="form-group">
+					  <label for="variable">Что дано?</label>
+					  <label for="variable">Введите известные вам переменные из существующих разделов</label> 
+					  <input type="text" name="varname" class="" required>
+					  <input type="number" name="varcount" class="" required>
+					  <input type="text" name="varname2" class="" required>
+					  <input type="number" name="varcount2" class="" required>
+					</div>
+	
+					<div class="form-group">
+					  <label for="variable">Что найти?</label>
+			
+					  <input type="text" name="varfind" class="" required>
+					  <div type="text" name="varfindcount" class="" required>
+					</div>
+	
+					<input type="submit" value="" class="btn btn-secondary btn-block">
+				  </form>
+				<div class="conclution"><h3>ответ</h3></div>
+				<div{{tasks}}</div>
 {% endblock %}

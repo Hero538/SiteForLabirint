@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'alerts/alert.html' %} 
+<div class="headline"><h2>перевод в n-ную систему счисления<h2></div>
+			<div class="vars"><h3>что дано?<h3></div>
+				<form action="{% url 'some_system'%}" method="POST">
+					{% csrf_token %}
+					<div class="form-group">
+					  <label>Введите число</label> 
+					  <input type="number" name="num" class="" required>
+					  <label>Какая система?</label> 
+					  <input type="number" name="n" class="" required>
+					</div>
+					<input type="submit" value="" class="btn btn-secondary btn-block">
+				  </form>
+				<div class="answer"><h3>ответ</h3></div>
+				<div{{answer}}</div>
+{% endblock %}
