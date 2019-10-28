@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% include 'alerts/alert.html' %}
 {% block content %}
 <div class="post" ><a href="/"></a>
 
@@ -17,6 +18,10 @@
   <input type="hidden">
 </form>
         {% endfor %}
+{% if error %}
+{{ error }}
+{% endif %}
     </div>
     </div>
+
 {% endblock %}
