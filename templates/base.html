@@ -17,9 +17,13 @@
 			<button type="submit">Поиск</button>
 			</form>
 		</div>
-		<div><a href="{% url 'login' %}">вход</a></div>
+		{% if user.is_authenticated %}
+        <div><a href="">{{user.username}}</a></div>
+
+        {% else %}
+        <div><a href="{% url 'login' %}">вход</a></div>
 		<div><a href="{% url 'register' %} ">регистрация</a></div>
-		<div><a href="/">гость</a></div>
+        {% endif %}
 		<div>
 			<div>
 				<div>

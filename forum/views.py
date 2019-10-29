@@ -1,7 +1,11 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.utils import timezone
-from .models import Post
+from .models import Post,Comment
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods
+from .forms import CommentForm
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def forum(request):
     posts= Post.objects.order_by('-pub_date').filter(is_published=True)
@@ -40,16 +44,45 @@ def details(request,post_id):
 
 @login_required(login_url='/accounts/signup')
 def upvote(request,post_id):
+
     if request.method == 'POST':
         post = get_object_or_404(Post,pk=post_id)
         post.votes_total +=1
         post.save()
         return redirect('/forum/' + str(post_id))
 
+
 @login_required(login_url='/accounts/signup')
 def downvote(request,post_id):
+
     if request.method == 'POST':
         post = get_object_or_404(Post,pk=post_id)
-        post.votes_total -=1
         post.save()
         return redirect('/forum/' + str(post_id))
+
+
+
+@require_http_methods(["POST"])
+@login_required(login_url='/accounts/signup/')
+def add_comment(request, post_id):
+    form = CommentForm(request.POST)
+    post = get_object_or_404(Post, id=post_id)
+
+    if True:
+        comment = Comment()
+        comment.path = []
+        comment.post_id = post
+        comment.user_id = auth.get_user(request)
+        comment.content = form.cleaned_data['comment_area']
+        comment.save()
+
+
+        try:
+            comment.path.extend(Comment.objects.get(id=form.cleaned_data['parent_comment']).path)
+            comment.path.append(comment.id)
+        except ObjectDoesNotExist:
+            comment.path.append(comment.id)
+
+        comment.save()
+
+    return redirect('/forum/' + str(post_id))
