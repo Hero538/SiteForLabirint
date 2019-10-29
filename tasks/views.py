@@ -1,11 +1,11 @@
-from django.shortcuts import render,redirect,HttpResponse
+from django.shortcuts import render,redirect
 from django.contrib import messages
 
 
 
 # Create your views here.
-main_variables=['F','S','U','Q']
-other_vars=['m','a','c','m','t','v','V','p'] 
+main_variables=['F','S','U'] #))
+other_vars=['a','m','t','v'] 
 def tasks(request):
     if request.method == 'POST':
         varname = request.POST['varname'] 
@@ -18,28 +18,28 @@ def tasks(request):
             return redirect('tasks') 
         if varfind in main_variables:
             try:
-                tasks=varcount//varcount2
+                answer=varcount//varcount2
             except (ZeroDivisionError, TypeError, NameError):
                 messages.error(request, 'Неверные данные')
             else:
-                tasks=varcount*varcount2
+                answer=varcount*varcount2
         else:
             if varname in main_variables:
                 try:
-                    tasks=varcount//varcount2
+                    answer=varcount//varcount2
                 except (ZeroDivisionError, TypeError, NameError):
                     messages.error(request, 'Неверные данные')
                 else:
-                    tasks=varcount//varcount2
+                    answer=varcount//varcount2
             else:
                 try:
-                    tasks=varcount2//varcount
+                    answer=varcount2//varcount
                 except (ZeroDivisionError, TypeError, NameError):
                     messages.error(request, 'Неверные данные')
                 else:
-                    tasks=varcount2//varcount
+                    answer=varcount2//varcount
         if tasks is not None:
-            return render(request, 'tasks.html', {'tasks': tasks})
+            return render(request, 'tasks.html', {'tasks': answer})
         else:
             messages.error(request, 'Неверные данные')
             return redirect('tasks')
