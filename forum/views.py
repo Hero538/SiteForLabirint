@@ -47,16 +47,19 @@ def upvote(request,post_id):
 
     if request.method == 'POST':
         post = get_object_or_404(Post,pk=post_id)
-        post.votes_total +=1
-        post.save()
-        return redirect('/forum/' + str(post_id))
+        if post!=0:
+            return redirect('/forum/') #эм что работает??? это же смешно
+        else:
+            post.votes_total +=1
+            post.save()
+            return redirect('/forum/' + str(post_id))
 
 
 @login_required(login_url='/accounts/signup')
 def downvote(request,post_id):
 
     if request.method == 'POST':
-        post = get_object_or_404(Post,pk=post_id)
+        post = get_object_or_404(Post,pk=post_id) #вопрос: у нас будет счетчик минусов, или это будет - к общей карме??
         post.save()
         return redirect('/forum/' + str(post_id))
 
