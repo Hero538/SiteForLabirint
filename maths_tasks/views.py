@@ -12,8 +12,8 @@ print(fac(5))
 def permutations(request):
     if request.method == 'POST':
         action = request.POST['action']
-        n = request.POST['n']
-        k = request.POST['k']
+        n = int(request.POST['n'])
+        k = int(request.POST['k'])
         if action=='P':
             try:
                 answer=fac(n)
