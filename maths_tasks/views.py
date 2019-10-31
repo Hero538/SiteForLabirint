@@ -9,7 +9,7 @@ def fac(n):
 
 print(fac(5))
 #actions=['P', 'A', 'C']
-def permutations(request):
+def maths_tasks(request):
     if request.method == 'POST':
         action = request.POST['action']
         n = int(request.POST['n'])
@@ -40,7 +40,7 @@ def permutations(request):
             return redirect('maths_tasks') 
             
         if answer is not None:
-            return render(request, 'maths_tasks.html', {'tasks': answer})
+            return render(request, 'maths_tasks.html', {'maths_tasks': answer})
         else:
             messages.error(request, 'Неверные данные')
             return redirect('maths_tasks')

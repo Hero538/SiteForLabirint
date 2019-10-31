@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'alerts/alert.html' %} 
+<div class="headline"><h2>Перестановки, сочетания, замещения<h2></div>
+			<div ><h3>что дано?<h3></div>
+				<form action="{% url 'maths_tasks'%}" method="POST">
+					{% csrf_token %}
+					<div class="form-group">
+					  <label>Введите необходимое действие ('P','A','C')</label> 
+            <input type="text" name="action" class="" required>
+            <label>Введите переменные(n и k; если k отсутствует, введите 0</label> <!--просто лень-->
+            <input type="number" name="n" placeholder="n" required>
+            <input type="number" name="k" placeholder="k" required>
+					</div>
+					<input type="submit" value="" class="btn btn-secondary btn-block">
+				  </form>
+				<div class=""><h3>ответ</h3></div>
+				<div>{{answer}}</div>
+{% endblock %}
