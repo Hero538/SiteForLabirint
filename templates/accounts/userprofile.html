@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+{% csrf_token %}
+
+    <h2>{{ user.username }}</h2>
+<ul>
+  <li>ты кто: {{ user.username }}</li>
+  <li class='avka'> {{ user.avatar }}</li>
+  <li>ты что: {{ user.profile.about }}</li>
+</ul>
+{% endblock %}
+
+</div>

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def register(request):
     if request.method == 'POST':
@@ -37,10 +38,16 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now logged in!')
-            return redirect('index')
+            return redirect('userprofile')
         else:
             messages.error(request, 'Wrong credentials')
             return redirect('login')
 
     else:
         return render(request, 'accounts/login.html')
+@login_required(login_url='/accounts/signup')
+def userprofile(request):
+#    profile = request.user.get_profile()
+    return render(request, 'accounts/userprofile.html')
+
+
