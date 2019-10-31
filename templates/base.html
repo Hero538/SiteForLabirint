@@ -18,7 +18,7 @@
 			</form>
 		</div>
 		{% if user.is_authenticated %}
-        <div><a href="">{{user.username}}</a></div>
+        <div><a href="{% url 'userprofile'%}">{{user.username}}</a></div>
 
         {% else %}
         <div><a href="{% url 'login' %}">вход</a></div>
