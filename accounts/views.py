@@ -53,7 +53,7 @@ def userprofile(request):
     return render(request, 'accounts/userprofile.html')
 
 def gotoedit(request):
-    return render(request,'accounts/useredit.html')
+    return render(request,'accounts/useredit.html') #ненужная функция но без нее никак
 
 @login_required(login_url='/accounts/signup')
 def edit(request):
@@ -67,7 +67,7 @@ def edit(request):
             user.image = request.POST['image']
             user.about = request.POST['about']
             user.save()
-            return redirect('accounts/userprofile/')
+            return redirect('accounts/userprofile/') #скопипастила у тебя, раньше работало, счас нет(()
 
 
 
