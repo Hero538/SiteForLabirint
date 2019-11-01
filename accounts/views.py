@@ -52,18 +52,22 @@ def userprofile(request):
 #    profile = request.user.get_profile()
     return render(request, 'accounts/userprofile.html')
 
-def gotoedit(request,user_id):
-    user = get_object_or_404(User,pk=user_id)
-    return render(request,'accounts/useredit.html',{'user':user})
+def gotoedit(request):
+    return render(request,'accounts/useredit.html')
 
 @login_required(login_url='/accounts/signup')
 def edit(request):
+    if request.POST['about']:
+            user = User()
+            user.about = request.POST['about']
+            user.save()
+            return redirect('accounts/userprofile/')
     if request.POST['about'] and request.POST['image']:
             user = User()
             user.image = request.POST['image']
             user.about = request.POST['about']
             user.save()
-            return redirect('accounts/userprofile/' + str(user.id))
+            return redirect('accounts/userprofile/')
 
 
 
