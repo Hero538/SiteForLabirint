@@ -19,7 +19,12 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('pages.urls')),
-    path('task/',include('tasks.urls')),
+    path('tasks/',include('tasks.urls')),
     path('accounts/',include('accounts.urls')),
     path('forum/',include('forum.urls')),
+    path('', include('materials.urls')),
+    path('', include('informatics_tasks.urls')),
+    path('', include('maths_tasks.urls'))
+    #path('search/', include('search.urls')),
+
 ]

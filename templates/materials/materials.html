@@ -2,19 +2,20 @@
 {% block content %}
 <div class="materials" <a href="/"></a>
 	<div class="headline"><h2>с какой задачей вам нужна помощь<h2></div>
-	<div class="math"><h3>математика<h3></div>
-		<ul><li></li></ul>
+	<div class="maths_tasks"><h3>математика<h3></div>
+		<ul><li><a href="{% url 'maths_tasks'%}">Перестановки, сочетания, замещения</a></li></ul>
 	<div class="physics"><h3>физика<h3></div>
 		<ul>
-			<li><a href="/kinematics">Кинематика</a></li>
-			<li><a href="/mechanics/mechanics.html">Механика</a></li>
-			<li><a href="/electrostatics">Электростатика</a></li>
-			<li><a href="/hydrostatics">Гидростатика</a></li> <!--так я ссылки потом более менее настрою окда-->
+			<li><a href="/physics/mechanics/mechanics.html">Механика</a></li>
+			<li><a href="/physics/kinematics/kinemitacs.html">Кинематика</a></li>
+			<li><a href="/physics/dynamics/dynamics.html">Динамика</a></li>
+			<li><a href="/physics/electrostatics/electrostatics.html">Электростатика</a></li>
+			<li><a href="/physics/hydrostatics/hydrostatics.html">Гидростатика</a></li> 
 
 		</ul>
-	<div class="physics"><h3>информатика<h3></div>
+	<div class="infromatics"><h3>информатика<h3></div>
 		<ul>
-			<li><a href="/informatics_tasks">Перевод систем счисления</a></li> <!--мда и это надо потом норм настроить-->
+			<li><a href="{% url 'informatics_tasks'%}">Перевод систем счисления</a></li> 
 		</ul>
 </div>
 {% endblock %}

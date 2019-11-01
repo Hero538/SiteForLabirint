@@ -1,6 +1,8 @@
-from django.shortcuts import render,redirect,HttpResponse
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+#from .forms import User, UserForm, ProfileForm
 # Create your views here.
 def register(request):
     if request.method == 'POST':
@@ -37,10 +39,35 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now logged in!')
-            return redirect('index')
+            return redirect('userprofile')
         else:
             messages.error(request, 'Wrong credentials')
             return redirect('login')
 
     else:
         return render(request, 'accounts/login.html')
+
+@login_required(login_url='/accounts/signup')
+def userprofile(request):
+#    profile = request.user.get_profile()
+    return render(request, 'accounts/userprofile.html')
+
+def gotoedit(request):
+    return render(request,'accounts/useredit.html') #ненужная функция но без нее никак
+
+@login_required(login_url='/accounts/signup')
+def edit(request):
+    if request.POST['about']:
+            user = User()
+            user.about = request.POST['about']
+            user.save()
+            return redirect('accounts/userprofile/')
+    if request.POST['about'] and request.POST['image']:
+            user = User()
+            user.image = request.POST['image']
+            user.about = request.POST['about']
+            user.save()
+            return redirect('accounts/userprofile/') #скопипастила у тебя, раньше работало, счас нет(()
+
+
+

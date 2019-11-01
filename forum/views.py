@@ -47,8 +47,12 @@ def upvote(request,post_id):
 
     if request.method == 'POST':
         post = get_object_or_404(Post,pk=post_id)
-        post.votes_total +=1
-        post.save()
+        if post.my_vote!=0:
+            return redirect('/forum/' + str(post_id))
+        else:
+            post.votes_total +=1
+            post.my_votes+=1
+            post.save()
         return redirect('/forum/' + str(post_id))
 
 
@@ -56,7 +60,7 @@ def upvote(request,post_id):
 def downvote(request,post_id):
 
     if request.method == 'POST':
-        post = get_object_or_404(Post,pk=post_id)
+        post = get_object_or_404(Post,pk=post_id) #она же ничего не делает мне кажется...
         post.save()
         return redirect('/forum/' + str(post_id))
 

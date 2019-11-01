@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+{% csrf_token %}
+<form method="post">
+    <span><a href="{% url 'gotoedit' %}">редачить</a></span>
+    <h2>{{ user.username }}</h2>
+        <ul>
+	    <li class='avka'> {{ user.avatar }}</li>
+	    <li>ты кто: {{ user.first_name }} {{user.last_name}}</li>
+	    <li>ты что: {{ user.profile.about }}</li>
+        </ul>
+        </form>
+{% endblock %}
+</div>
