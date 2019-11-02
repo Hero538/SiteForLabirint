@@ -19,7 +19,11 @@
 		</div>
 		{% if user.is_authenticated %}
         <div><a href="{% url 'userprofile'%}">{{user.username}}</a></div>
-
+        <a href="javascript:{document.getElementById('logout').submit()}">Выйти</a>
+        <form action="{% url 'logout' %}" method="POST" id="logout">
+            {% csrf_token %}
+            <input type="hidden">
+        </form>
         {% else %}
         <div><a href="{% url 'login' %}">вход</a></div>
 		<div><a href="{% url 'register' %} ">регистрация</a></div>
@@ -30,7 +34,7 @@
 					<ul>
 						<li><a href="{% url 'materials' %}">Материалы</a></li>
 						<li><a href="/">Главная</a></li>
-						<li><a href="{%url 'forum'%}">Обсуждение</a></li>
+						<li><a href="{% url 'forum' %}">Обсуждение</a></li>
 					</ul>
 				</div>
 				<div class="reshalka">

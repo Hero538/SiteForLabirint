@@ -40,6 +40,7 @@ def add(request):
 
 def details(request,post_id):
     post = get_object_or_404(Post,pk=post_id)
+
     return render(request,'forum/details.html',{'post':post})
 
 @login_required(login_url='/accounts/signup')
