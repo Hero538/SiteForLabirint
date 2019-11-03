@@ -14,9 +14,6 @@ def tasks(request):
         varname2 = request.POST['varname2']
         varcount2= int(request.POST['varcount2'])
         varfind= request.POST['varfind'] 
-        #if varname not in main_variables or varname2 not in main_variables or varfind not in main_variables or varname not in other_vars or varname2 not in other_vars or varfind not in other_vars:
-         #   messages.error(request, 'Неверные данные')
-          #  return redirect('tasks') 
         if varfind in main_variables:
             try:
                 answer=varcount*varcount2
@@ -24,7 +21,6 @@ def tasks(request):
                 messages.error(request, 'Неверные данные')
             else:
                 answer=varcount*varcount2
-                #answer.save()
                 return render(request, 'tasks.html', {'tasks': answer})
         elif varfind in other_vars :
             try:
@@ -33,7 +29,6 @@ def tasks(request):
                 messages.error(request, 'Неверные данные')
             else:
                 answer=varcount//varcount2
-                #answer.save()
                 return render(request, 'tasks.html', {'tasks': answer})
         else:
             try:
@@ -42,7 +37,6 @@ def tasks(request):
                 messages.error(request, 'Неверные данные')
             else:
                 answer=varcount2//varcount
-                #answer.save()
                 return render(request, 'tasks.html', {'tasks': answer})
         if answer is not None:
             return render(request, 'tasks.html', {'tasks': answer})
