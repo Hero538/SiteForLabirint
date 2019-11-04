@@ -14,27 +14,17 @@ def tasks(request):
         varname2 = request.POST['varname2']
         varcount2= int(request.POST['varcount2'])
         varfind= request.POST['varfind'] 
-        if varfind in main_variables:
-            try:
-                answer=varcount*varcount2
-            except (ZeroDivisionError, TypeError, NameError):
-                messages.error(request, 'Неверные данные')
-            else:
-                answer=varcount*varcount2
-                return render(request, 'tasks.html', {'tasks': answer})
-        elif varfind in other_vars :
-            try:
-                answer=varcount//varcount2
-            except (ZeroDivisionError, TypeError, NameError):
-                messages.error(request, 'Неверные данные')
-            else:
-                answer=varcount//varcount2
-                return render(request, 'tasks.html', {'tasks': answer})
+        try:
+            answer=varcount2//varcount
+        except (ZeroDivisionError, TypeError, NameError):
+             messages.error(request, 'Неверные данные')
         else:
-            try:
-                answer=varcount2//varcount
-            except (ZeroDivisionError, TypeError, NameError):
-                messages.error(request, 'Неверные данные')
+            if varfind in main_variables:
+                answer=varcount*varcount2
+                return render(request, 'tasks.html', {'tasks': answer})
+            elif varfind in other_vars :
+                answer=varcount//varcount2
+                return render(request, 'tasks.html', {'tasks': answer})
             else:
                 answer=varcount2//varcount
                 return render(request, 'tasks.html', {'tasks': answer})

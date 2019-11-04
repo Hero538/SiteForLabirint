@@ -48,12 +48,10 @@ def upvote(request,post_id):
 
     if request.method == 'POST':
         post = get_object_or_404(Post,pk=post_id)
-        if post.my_vote!=0:
-            return redirect('/forum/' + str(post_id))
-        else:
-            post.votes_total +=1
-            post.my_votes+=1
-            post.save()
+        
+        post.votes_total +=1
+        post.my_votes+=1
+        post.save()
         return redirect('/forum/' + str(post_id))
 
 
