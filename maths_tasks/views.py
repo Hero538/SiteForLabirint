@@ -28,9 +28,9 @@ def maths_tasks(request):
                 messages.error(request, 'Неверные данные')
                 return redirect('maths_tasks') 
         if answer is not None:
-            return render(request, 'maths_tasks.html', {'maths_tasks': answer})
+            return render(request, 'maths_tasks/maths_tasks.html', {'maths_tasks': answer})
         else:
             messages.error(request, 'Неверные данные')
             return redirect('maths_tasks')
     else:
-        return render(request, 'maths_tasks.html')
+        return render(request, 'maths_tasks/maths_tasks.html')

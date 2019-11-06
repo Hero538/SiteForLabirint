@@ -50,7 +50,6 @@ def upvote(request,post_id):
         post = get_object_or_404(Post,pk=post_id)
         
         post.votes_total +=1
-        post.my_votes+=1
         post.save()
         return redirect('/forum/' + str(post_id))
 
@@ -75,10 +74,9 @@ def add_comment(request, post_id):
         comment = Comment()
         comment.path = []
         comment.post_id = post
-        comment.user_id = auth.get_user(request)
+        comment.user_id = auth.get_user(request) 
         comment.content = form.cleaned_data['comment_area']
         comment.save()
-
 
         try:
             comment.path.extend(Comment.objects.get(id=form.cleaned_data['parent_comment']).path)

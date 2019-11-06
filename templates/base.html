@@ -8,7 +8,7 @@
     <style>
 </style>
 </head>
-  <body>
+<body>
 	<header>
 		<div><a href="/"><h1>Сайт<h1></a></div>
 		<div>
@@ -18,16 +18,16 @@
 			</form>
 		</div>
 		{% if user.is_authenticated %}
-        <div><a href="{% url 'userprofile'%}">{{user.username}}</a></div>
-        <a href="javascript:{document.getElementById('logout').submit()}">Выйти</a>
-        <form action="{% url 'logout' %}" method="POST" id="logout">
-            {% csrf_token %}
-            <input type="hidden">
-        </form>
-        {% else %}
-        <div><a href="{% url 'login' %}">вход</a></div>
-		<div><a href="{% url 'register' %} ">регистрация</a></div>
-        {% endif %}
+		<div><a href="{% url 'userprofile'%}">{{user.username}}</a></div>
+		<a href="javascript:{document.getElementById('logout').submit()}">Выйти</a>
+		<form action="{% url 'logout' %}" method="POST" id="logout">
+		    {% csrf_token %}
+		    <input type="hidden">
+		</form>
+		{% else %}
+		<div><a href="{% url 'login' %}">Вход</a></div>
+		<div><a href="{% url 'register' %} ">Регистрация</a></div>
+		{% endif %}
 		<div>
 			<div>
 				<div>
@@ -43,11 +43,12 @@
 			</div>
 		</div>
 	</header>
-    {% block content %}
-    {% endblock %}
-    <footer>
-    <ul class="">
-			<li class='left'><a href="/">Навигация</a></li>
-			<li class='right'><a href="/">Поддержать проект</a></li>
-		</ul>
-    </footer>
+</body>
+	{% block content %}
+	{% endblock %}
+<footer>
+	<ul class="">
+		<li class='left'><a href="/">Навигация</a></li>
+		<li class='right'><a href="/">Поддержать проект</a></li>
+	</ul>
+</footer>

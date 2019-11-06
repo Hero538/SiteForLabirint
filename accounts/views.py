@@ -16,22 +16,21 @@ def register(request):
         password2 = request.POST['password2']
         if password == password2:
             if User.objects.filter(username=username).exists():
-                messages.error(request, 'That username is taken')
+                messages.error(request, 'Это имя занято')
                 return redirect('register')
             else:
                 if User.objects.filter(email=email).exists():
-                    messages.error(request, 'That email is being used')
+                    messages.error(request, 'Эта почта уже используется')
                 else:
                     about = 'Im a user of this cool forum'
                     user = User.objects.create_user(username=username, password=password, email=email,first_name=first_name, last_name=last_name)
                     user.save()
-
-                    messages.success(request, 'You are now registered and can login')
+                    messages.success(request, 'Вы успешно зарегистрировались и можете войти')
                     return redirect('login')
 
 
         else:
-            messages.error(request, 'Passwords do not match')
+            messages.error(request, 'Пароли не совпадают')
             return redirect('register')
     else:
         return render(request, 'accounts/register.html')
@@ -42,12 +41,12 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            messages.success(request, 'You are now logged in!')
+            messages.success(request, 'Вы вошли!')
 
 
             return redirect('userprofile')
         else:
-            messages.error(request, 'Wrong credentials')
+            messages.error(request, 'Неверные данные')
             return redirect('login')
 
     else:
@@ -56,7 +55,7 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        messages.success(request,'You are now logged out.')
+        messages.success(request,'Вы вышли.')
         return redirect('index')
 
 @login_required(login_url='/accounts/signup')
@@ -76,28 +75,29 @@ def userprofile(request):
 def gotoedit(request):
     return render(request,'accounts/useredit.html') #ненужная функция но без нее никак
 # def setprofile(request):
-# #     about = request.POST['about'] # Стремный способ
+# #     about = request.POST['about'] # Стремный способ // ну ок
 # #     avatar = request.POST['avatar']
 # #     profile = Profile.objects.create(about=about, avatar=None, user_id=request.user.id)
 # #     profile.save()
 # #     return redirect('login')
 @login_required(login_url='/accounts/signup')
 def edit(request):
+    if request.method == 'POST':
+        if request.POST['about']:
+                profile = Profile.objects.get(user_id=request.user.id)
+                profile.about = request.POST['about']
+                #profile.user_id = request.user.id
+                profile.save()
+                return redirect('userprofile')
+        if request.POST['about'] and request.POST['image']:
+                profile = Profile.objects.get(user_id=request.user.id)
+                profile.avatar = request.POST['image']
+                #profile.id = request.user.id
+                profile.about = request.POST['about']
+                profile.save()
+                return redirect('userprofile')
 
 
-    if request.POST['about']:
-            profile = Profile.objects.get(user_id=request.user.id)
-            profile.about = request.POST['about']
-            #profile.user_id = request.user.id
-            profile.save()
-            return redirect('userprofile')
-    if request.POST['about'] and request.POST['image']:
-            profile = Profile.objects.get(user_id=request.user.id)
-            profile.avatar = request.POST['image']
-            #profile.id = request.user.id
-            profile.about = request.POST['about']
-            profile.save()
-            return redirect('userprofile')
 
 
 

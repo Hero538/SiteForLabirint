@@ -11,28 +11,29 @@ def tasks(request):
     if request.method == 'POST':
         varname = request.POST['varname'] 
         varcount= int(request.POST['varcount'])
-        varname2 = request.POST['varname2']
+        #varname2 = request.POST['varname2']
         varcount2= int(request.POST['varcount2'])
         varfind= request.POST['varfind'] 
         try:
-            answer=varcount2//varcount
+            answer=varcount2/varcount
         except (ZeroDivisionError, TypeError, NameError):
              messages.error(request, 'Неверные данные')
         else:
             if varfind in main_variables:
                 answer=varcount*varcount2
-                return render(request, 'tasks.html', {'tasks': answer})
-            elif varfind in other_vars :
-                answer=varcount//varcount2
-                return render(request, 'tasks.html', {'tasks': answer})
-            else:
-                answer=varcount2//varcount
-                return render(request, 'tasks.html', {'tasks': answer})
+                return render(request, 'tasks/tasks.html', {'tasks': answer})
+            elif varfind in other_vars :    
+                if varname in main_variables:
+                    answer=varcount/varcount2
+                    return render(request, 'tasks/tasks.html', {'tasks': answer})
+                else:
+                    answer=varcount2/varcount
+                    return render(request, 'tasks/tasks.html', {'tasks': answer})
         if answer is not None:
-            return render(request, 'tasks.html', {'tasks': answer})
+            return render(request, 'tasks/tasks.html', {'tasks': answer})
         else:
             messages.error(request, 'Неверные данные')
             return redirect('tasks')
     else:
 
-        return render(request, 'tasks.html')
+        return render(request, 'tasks/tasks.html')

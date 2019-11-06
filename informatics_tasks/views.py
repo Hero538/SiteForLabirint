@@ -14,9 +14,9 @@ def informatics_tasks(request):
         n = int(request.POST['n'])
         answer=somesystem(n, num)
         if answer is not None:
-            return render(request, 'informatics_tasks.html', {'answer': answer})
+            return render(request, 'informatics_tasks/informatics_tasks.html', {'answer': answer})
         else:
             messages.error(request, 'Пусто')
             return redirect('informatics_tasks')
     else:
-        return render(request, 'informatics_tasks.html')
+        return render(request, 'informatics_tasks/informatics_tasks.html')
