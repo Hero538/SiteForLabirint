@@ -8,7 +8,7 @@
 	        <li class='avka'><img src="{{ profile.avatar }}">  </li>
 	        <li>Никнейм:{{ profile.user.username }} </li>
 	        <li>О пользователе:{{ profile.about }} </li>
-            <a href="{% url 'edit' %}">Редактировать</a>
+            <a href="{% url 'gotoedit' %}">Редактировать</a>
         </ul>
 </form>
 {% endblock %}
