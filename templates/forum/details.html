@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% include 'alerts/alert.html' %}
+{% include 'alerts/alert.html' %}
 <div class="row">
   <div class="col-2">
     <img src="{{ product.icon.url }}" class="img-fluid" />
@@ -42,6 +42,7 @@
   <input type="hidden">
 </form>
 <h2>Комментарии</h2>
+{% csrf_token%}
     {% for comment in comments %}
         <a name="comment-{{ comment.id }}"></a>
         <div class="row" id="{{ comment.id }}">
@@ -54,9 +55,8 @@
                     </div>
                     <div class="panel-body">
                         <div>{{ comment.content|safe }}</div>
-                        {% if form %}<a class="btn btn-default btn-xs pull-right"
-                                        onclick="return show_comments_form({{ comment.id }})">
-                            Ответить</a>
+                        {% if form %}
+                        <a class="btn btn-default btn-xs pull-right" onclick="return show_comments_form({{ comment.id }})">Ответить</a>
                         {% endif %}
                     </div>
                 </div>
@@ -66,10 +66,8 @@
     {% if user.is_authenticated %}
         <form id="comment_form" action="{% url 'add_comment' post.id %}" method="post">
         {% csrf_token %}
-        <p><input type="text" name="comment" value="Комментарий" /></p>
-
+            <p><input type="text" name="comment" value="Комментарий" /></p>
             <button type="submit" class="btn btn-primary">Комментировать</button>
-
         </form>
     {% else %}
         <div class="panel panel-warning">
