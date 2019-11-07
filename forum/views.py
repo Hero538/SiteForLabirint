@@ -80,7 +80,6 @@ def add_comment(request, post_id):
         comment.id = request.user.id
         comment.save()
 
-
         try:
             comm = get_object_or_404(Comment,pk=request.user.id)
             comment.path.extend(comm.path)

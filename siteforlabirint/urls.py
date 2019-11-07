@@ -23,8 +23,8 @@ urlpatterns = [
     path('accounts/',include('accounts.urls')),
     path('forum/',include('forum.urls')),
     path('', include('materials.urls')),
-    path('', include('informatics_tasks.urls')),
-    path('', include('maths_tasks.urls'))
+    path('informatics_tasks', include('informatics_tasks.urls')),
+    path('maths_tasks', include('maths_tasks.urls'))
     #path('search/', include('search.urls')),
 
 ]

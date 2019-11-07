@@ -2,17 +2,14 @@
 {% block content %}
 <div>
 
-<form method="post">
-    <span><a href="">редачить</a></span>
-    <h2></h2>
+<form method="post" >
+    <span><a href="">Профиль</a></span>
         <ul>
-	    <li class='avka'><img src="{{ profile.avatar }}">  </li>
-	    <li>ты кто:{{ profile.user.username }} </li>
-	    <li>ты что:{{ profile.about }} </li>
-            <a href="{% url 'gotoedit' %}">Edit</a>
-
+	        <li class='avka'><img src="{{ profile.avatar }}">  </li>
+	        <li>Никнейм:{{ profile.user.username }} </li>
+	        <li>О пользователе:{{ profile.about }} </li>
+            <a href="{% url 'gotoedit' %}">Редактировать</a>
         </ul>
-        </form>
-
+</form>
 {% endblock %}
 </div>
