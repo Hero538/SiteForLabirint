@@ -1,28 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Create</h1>
-    <form method="POST" action="{% url 'add' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-        Title:
+<form method="POST" action="{% url 'add' %}" enctype="multipart/form-data">
+{% csrf_token %}
+    <div>Title:</div>
     <br>
     <input type="text" name="title">
-<br>
-
-Body:
+    <div>Body:</div>
     <br>
     <input type="text" name="body">
     <br>
-
-
-     Image:
-        <br>
-        <input type="file" name="image">
-        <br>
-        <br>
-        <input class="btn btn-primary" type="submit" value="Add Product">
-
-
-
-
-    </form>
+    <div>Image:</div>
+    <br>
+    <input type="file" name="image">
+    <br>
+    <br>
+    <input class="btn btn-primary" type="submit" value="Add Product">
+</form>
 {% endblock %}

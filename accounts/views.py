@@ -70,10 +70,11 @@ def userprofile(request):
 
 
     # , {'profile': profile, 'user': user}
-    return render(request, 'accounts/userprofile.html',{'profile':profile})
 
+    return render(request, 'accounts/userprofile.html',{'profile':profile})
+    
 def gotoedit(request):
-    return render(request,'accounts/useredit.html') #ненужная функция но без нее никак
+    return render(request,'accounts/useredit.html')
 # def setprofile(request):
 # #     about = request.POST['about'] # Стремный способ // ну ок
 # #     avatar = request.POST['avatar']
@@ -82,21 +83,20 @@ def gotoedit(request):
 # #     return redirect('login')
 @login_required(login_url='/accounts/signup')
 def edit(request):
-    if request.method == 'POST':
-        if request.POST['about']:
-                profile = Profile.objects.get(user_id=request.user.id)
-                profile.about = request.POST['about']
-                #profile.user_id = request.user.id
-                profile.save()
-                return redirect('userprofile')
-        if request.POST['about'] and request.POST['image']:
-                profile = Profile.objects.get(user_id=request.user.id)
-                profile.avatar = request.POST['image']
-                #profile.id = request.user.id
-                profile.about = request.POST['about']
-                profile.save()
-                return redirect('userprofile')
+    if request.POST['about']:
+        profile = Profile.objects.get(user_id=request.user.id)
+        profile.about = request.POST['about']
+        #profile.user_id = request.user.id
+        profile.save()
+        return redirect('userprofile')
 
+    if request.POST['about'] and request.POST['image']:
+        profile = Profile.objects.get(user_id=request.user.id)
+        profile.avatar = request.POST['image']
+        #profile.id = request.user.id
+        profile.about = request.POST['about']
+        profile.save()
+        return redirect('userprofile')
 
 
 

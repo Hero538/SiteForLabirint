@@ -1,4 +1,6 @@
 <!--ура я опять все буду делать в дивах!-->
+{% extends 'base.html' %}
+{% block content %}
 <main>
 <div>
     <div><h1>Механика</h1></div> <!--я все скопипастила-->
@@ -10,6 +12,7 @@
     <p><a href="/kinematics/kinematics.html">Кинематика</a> — раздел, изучающий математическое описание движения тел без рассмотрения причин движения</p>
     <p><a href="/dynamics/dynamics.html">Динамика</a> — ещё раздел, изучающий движение тел с учетом причин вызвавших это движение</p>
     <p>И, соответственно, статика - раздел,изучающий равновесие тел под действием сил. На сайте можно посмотреть раздел с <a href="/electrostatics/electroctatics.html">электростатикой</a>, изучающий поведение тел в электрической среде</p>
-    <input type="button" value="Далее" onclick="javascript:window.location='/kinematics/kinematics.html'"/> <!--жаба моя жаба-->
+    <input type="button" value="Далее" onclick="javascript:window.location='{%url 'kinematics' %}'"/> <!--жаба моя жаба-->
 </div>
 </main>
+{% endblock %}

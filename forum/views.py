@@ -64,26 +64,24 @@ def downvote(request,post_id):
 
 
 
-@require_http_methods(["POST"])
+@require_http_methods(["post"])
 @login_required(login_url='/accounts/signup/')
 def add_comment(request, post_id):
-    form = CommentForm(request.POST)
-    post = get_object_or_404(Post, id=post_id)
-
-    if True:
+    form = CommentForm(request.post)
+    post = get_object_or_404(Post, id=comment_form_id)
+    #if request.method == 'post':
+    if form.is_valid():
         comment = Comment()
         comment.path = []
         comment.post_id = post
         comment.user_id = auth.get_user(request) 
         comment.content = form.cleaned_data['comment_area']
         comment.save()
-
         try:
             comment.path.extend(Comment.objects.get(id=form.cleaned_data['parent_comment']).path)
             comment.path.append(comment.id)
         except ObjectDoesNotExist:
             comment.path.append(comment.id)
-
         comment.save()
 
     return redirect('/forum/' + str(post_id))
