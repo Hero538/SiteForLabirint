@@ -9,4 +9,7 @@ def mechanics(request):
 
 def kinematics(request):
     return render(request,'materials/physics/kinematics/kinematics.html')
+
+def dynamics(request):
+    return render(request,'materials/physics/dynamics/dynamics.html')
     

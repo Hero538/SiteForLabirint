@@ -88,14 +88,13 @@ def add_comment(request, post_id):
         comment.content = request.POST['comment']
         comment.user = request.user
         comment.save()
-    #вроде так работает, хотя хз...
-       # try:
-       #     comm = get_object_or_404(Comment,pk=request.user.id)
-       #     comment.path.extend(comm.path)
-       #     comment.path.append(comment.id)
-       # except ObjectDoesNotExist:
-       #     comment.path.append(comment.id)
-
-        #comment.save()
+    #вроде и так работает, хотя хз... 
+        try:
+           comm = get_object_or_404(Comment,pk=request.user.id)
+           comment.path.extend(comm.path)
+           comment.path.append(comment.id)
+        except ObjectDoesNotExist:
+           comment.path.append(comment.id)
+    comment.save()
 
     return redirect('/forum/' + str(post_id))
