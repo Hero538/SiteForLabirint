@@ -9,3 +9,4 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('id','title')
     list_per_page = 15
 admin.site.register(Post,PostAdmin)
+admin.site.register(Comment)
