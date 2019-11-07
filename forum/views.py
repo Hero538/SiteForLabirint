@@ -40,25 +40,26 @@ def add(request):
 
 def details(request,post_id):
     post = get_object_or_404(Post,pk=post_id)
+    comments = Comment.objects.all()
 
-    return render(request,'forum/details.html',{'post':post})
+    return render(request,'forum/details.html',{'post':post,'comments':comments})
 
 @login_required(login_url='/accounts/signup')
-def upvote(request,post_id):
+def upvote(request,post_id):               #Это надо исправить
 
     if request.method == 'POST':
         post = get_object_or_404(Post,pk=post_id)
-        
         post.votes_total +=1
         post.save()
         return redirect('/forum/' + str(post_id))
 
 
 @login_required(login_url='/accounts/signup')
-def downvote(request,post_id):
+def downvote(request,post_id):      #Тоже надо исправить
 
     if request.method == 'POST':
-        post = get_object_or_404(Post,pk=post_id) #она же ничего не делает мне кажется...
+        post = get_object_or_404(Post,pk=post_id)
+        post.votes_total -=1
         post.save()
         return redirect('/forum/' + str(post_id))
 
@@ -67,19 +68,21 @@ def downvote(request,post_id):
 @require_http_methods(["POST"])
 @login_required(login_url='/accounts/signup/')
 def add_comment(request, post_id):
-    form = CommentForm(request.POST)
+    #form = CommentForm(request.POST)
     post = get_object_or_404(Post, id=post_id)
-
+                                                #Кривая хурма ,надо будет исправить... Пока что так
     if True:
         comment = Comment()
         comment.path = []
         comment.post_id = post
-        comment.user_id = auth.get_user(request) 
-        comment.content = form.cleaned_data['comment_area']
+        comment.user_id = auth.get_user(request)
+        comment.content = request.POST['comment']
+        comment.id = request.user.id
         comment.save()
 
         try:
-            comment.path.extend(Comment.objects.get(id=form.cleaned_data['parent_comment']).path)
+            comm = get_object_or_404(Comment,pk=request.user.id)
+            comment.path.extend(comm.path)
             comment.path.append(comment.id)
         except ObjectDoesNotExist:
             comment.path.append(comment.id)
