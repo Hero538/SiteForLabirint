@@ -7,6 +7,7 @@ from django.views.decorators.http import require_http_methods
 from .forms import CommentForm
 from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponseRedirect 
 # Create your views here.
 def forum(request):
 
@@ -52,23 +53,31 @@ def details(request,post_id):
     return render(request,'forum/details.html',{'post':post,'comments':comments})
 
 @login_required(login_url='/accounts/signup')
-def upvote(request,post_id):               #Это надо исправить
-
-    if request.method == 'POST':
-        post = get_object_or_404(Post,pk=post_id)
-        post.votes_total +=1
-        post.save()
-        return redirect('/forum/' + str(post_id))
+def upvote(request,post_id):               #Это надо исправить 
+    if post_id in request.COOKIES:          
+        return redirect('/forum/' + post_id)
+    else:
+        if request.method == 'POST':
+            post = get_object_or_404(Post,pk=post_id)
+            post.votes_total +=1
+            post.save()
+            response = redirect('/forum/' + post_id)
+            response.set_cookie(post_id, 'voted')
+            return response
 
 
 @login_required(login_url='/accounts/signup')
-def downvote(request,post_id):      #Тоже надо исправить
-
-    if request.method == 'POST':
-        post = get_object_or_404(Post,pk=post_id)
-        post.votes_total -=1
-        post.save()
-        return redirect('/forum/' + str(post_id))
+def downvote(request,post_id):      #Тоже надо исправить // ок пока так, оставим этот способ, если ничего не придумается больше
+    if post_id in request.COOKIES:          
+        return redirect('/forum/' + post_id)
+    else:
+        if request.method == 'POST':
+            post = get_object_or_404(Post,pk=post_id)
+            post.votes_total -=1
+            post.save()
+            response = redirect('/forum/' + post_id)
+            response.set_cookie(post_id, 'voted')
+            return response #так получается, если ты однажды проголосовал, назад дороги нет 
 
 
 
@@ -84,16 +93,15 @@ def add_comment(request, post_id):
         comment.post_id = post
         comment.user_id = auth.get_user(request)
         comment.content = request.POST['comment']
-        comment.id = request.user.id
+        comment.user = request.user
         comment.save()
-
+    #вроде и так работает, хотя хз... 
         try:
-            comm = get_object_or_404(Comment,pk=request.user.id)
-            comment.path.extend(comm.path)
-            comment.path.append(comment.id)
+           comm = get_object_or_404(Comment,pk=request.user.id)
+           comment.path.extend(comm.path)
+           comment.path.append(comment.id)
         except ObjectDoesNotExist:
-            comment.path.append(comment.id)
-
-        comment.save()
+           comment.path.append(comment.id)
+    comment.save()
 
     return redirect('/forum/' + str(post_id))

@@ -2,6 +2,7 @@
 {% include 'alerts/alert.html' %}
 {% block content %}
 <div class="post" ><a href="/"></a>
+
 <div><a href="{% url 'add' %}">Создать новый пост.</a></div>
 		{% for post in posts %}
         <div class="row pt-3">
@@ -12,16 +13,16 @@
         <form id="upvote" method="POST" action="{% url 'upvote' post.id %}">
   {% csrf_token%}
   <input type="hidden">
+
+<form id="downvote" method="POST" action="{% url 'downvote' post.id %}">
+    {% csrf_token%}
+    <input type="hidden">
 </form>
- <form id="downvote" method="POST" action="{% url 'downvote' post.id %}">
-  {% csrf_token%}
-  <input type="hidden">
-</form>
-        {% endfor %}
+{% endfor %}
 {% if error %}
 {{ error }}
 {% endif %}
-    </div>
-    </div>
+</div>
+</div>
 
 {% endblock %}

@@ -3,10 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="8b0ae578-ea0c-4aaf-bce4-a8ed2aa1f946" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/forum/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forum/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/forum/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/materials/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/materials/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/materials/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/materials/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accounts/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accounts/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accounts/useredit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/useredit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accounts/userprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/userprofile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/forum/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/forum/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/forum/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/forum/details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/forum/forum.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/forum/forum.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/materials/materials.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/materials/materials.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/materials/physics/dynamics/dynamics.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/materials/physics/dynamics/dynamics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/materials/physics/hydrostatics/hydrostatics.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/materials/physics/kinematics/kinematics.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/materials/physics/kinematics/kinematics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/materials/physics/mechanics/mechanics.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/materials/physics/mechanics/mechanics.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +124,7 @@
       <workItem from="1572944859018" duration="92000" />
       <workItem from="1572973050360" duration="640000" />
       <workItem from="1573139629889" duration="5500000" />
-      <workItem from="1573231286199" duration="1909000" />
+      <workItem from="1573231286199" duration="5147000" />
     </task>
     <servers />
   </component>
