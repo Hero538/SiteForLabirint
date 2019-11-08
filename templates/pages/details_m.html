@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+  <div>
+    <h1>{{ tiding.title }}</h1>
+  </div>
+</div>
+<br>
+
+  <div >
+    <img src="{{ tiding.image }}" class="img-fluid"  />
+  </div>
+
+
+
+
+  <div >
+    <h4><span ></span> {{ tiding.pub_date }}</h4>
+  </div>
+
+
+  <div >
+    <p>{{ tiding.body }}</p>
+  </div>
+{% endblock %}
