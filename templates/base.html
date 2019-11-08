@@ -42,6 +42,15 @@
 				</div>
 			</div>
 		</div>
+
+        {% if 'forum' in request.path %}
+        <form action="{% url 'forum' %}">
+        <input name="search" type="search" placeholder="Search" aria-label="Search">
+        <input type="submit" value="Поиск">
+
+        </form>
+
+        {% endif %}
 	</header>
 </body>
 	{% block content %}

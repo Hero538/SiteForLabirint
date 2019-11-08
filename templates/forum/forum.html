@@ -2,7 +2,7 @@
 {% include 'alerts/alert.html' %}
 {% block content %}
 <div class="post" ><a href="/"></a>
-
+<div><a href="{% url 'add' %}">Создать новый пост.</a></div>
 		{% for post in posts %}
         <div class="row pt-3">
             <div class="col-2" onclick="window.location='{% url 'details' post.id %}'" style="cursor: pointer"><img src="{{post.image }}" class="img-fluid" /></div>

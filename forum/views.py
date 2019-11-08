@@ -5,10 +5,17 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 from .forms import CommentForm
+from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def forum(request):
-    posts= Post.objects.order_by('-pub_date').filter(is_published=True)
+
+    search_query = request.GET.get('search', '')
+    if search_query:
+        posts = Post.objects.filter(Q(title__icontains=search_query) | Q(body__icontains=search_query))
+        #posts = Post.objects.filter(title__icontains=search_query)
+    else:
+        posts = Post.objects.order_by('-pub_date').filter(is_published=True)
     return render(request,'forum/forum.html',{'posts':posts})
 
 @login_required(login_url='/accounts/signup')
