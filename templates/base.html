@@ -12,10 +12,14 @@
 	<header>
 		<div><a href="/"><h1>Сайт<h1></a></div>
 		<div>
-			<form>
-			<input type="text" placeholder="поиск по тегам">
-			<button type="submit">Поиск</button>
-			</form>
+			{% if 'forum' in request.path %}
+        <form action="{% url 'forum' %}">
+        <input name="search" type="search" placeholder="Search" aria-label="Search">
+        <input type="submit" value="Поиск">
+
+        </form>
+
+        {% endif %}
 		</div>
 		{% if user.is_authenticated %}
 		<div><a href="{% url 'userprofile'%}">{{user.username}}</a></div>
@@ -43,14 +47,7 @@
 			</div>
 		</div>
 
-        {% if 'forum' in request.path %}
-        <form action="{% url 'forum' %}">
-        <input name="search" type="search" placeholder="Search" aria-label="Search">
-        <input type="submit" value="Поиск">
 
-        </form>
-
-        {% endif %}
 	</header>
 </body>
 	{% block content %}
