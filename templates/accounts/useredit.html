@@ -3,12 +3,14 @@
 <h1>Редактировать</h1>
 <form method="POST" action="{% url 'edit' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    <div>About:</div>
+    About:
     <br>
-    <input type="text" name="about">
-    <div>Image:</div>
+        <input type="text" name="about">
+    </br>
+     Image:
     <br>
-    <input type="file" name="image" >
-    <input class="btn btn-primary" type="submit" value="поiхали">
-</form>
+        <input type="file" name="image" >
+    </br>
+        <input class="btn btn-primary" type="submit" value="поiхали">
+    </form>
 {% endblock %}

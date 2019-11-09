@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="news" ><a href="/"></a>
-
-		<div class="image"><img src=""></div>
-		<div class="headline"><h2>Какая-то новость<h2></div>
-		<div class="news_text"><h3>что-то<h3></div>
-		<span><a href="/">юзернейм</a></span>
+        {% for tiding in tidings %}
+		<div class="image"><img src="{{tiding.image}}"></div>
+		<div class="headline"><h2>{{tiding.title}}<h2></div>
+		<div class="news_text"><h3>{{tiding.summary}}<h3></div>
+		<span><a href="{% url 'details_m' tiding.id %}">Читать полностью...</a></span>
+        {% endfor %}
 	</div>
 
 {% endblock %}

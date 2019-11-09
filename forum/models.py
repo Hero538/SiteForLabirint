@@ -9,7 +9,7 @@ class Post(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to='photos/%Y/%m/%d/',blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    votes_total = models.SmallIntegerField(default=0)
+    votes_total = models.IntegerField(default=0)
     is_published = models.BooleanField(default=True)
     def pub_date_pretty(self):
         return self.pub_date.strftime('%b %e %Y')
