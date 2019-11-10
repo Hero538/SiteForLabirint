@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tasks.apps.TasksConfig',
-    #'search.apps.SearchConfig',
 ]
 
 MIDDLEWARE = [

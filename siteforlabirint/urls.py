@@ -25,6 +25,5 @@ urlpatterns = [
     path('', include('materials.urls')),
     path('informatics_tasks', include('informatics_tasks.urls')),
     path('maths_tasks', include('maths_tasks.urls'))
-    #path('search/', include('search.urls')),
 
 ]

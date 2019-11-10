@@ -5,21 +5,90 @@
 <meta charset="UTF-8">
 <title>Сайтнейм</title>
 <script src="https://kit.fontawesome.com/c04fd68ff8.js" crossorigin="anonymous"></script>
-    <style>
-</style>
+<!--<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		header.site {
+			background-color:#3c9cd0d8;
+			font-size: 20px;
+			font-weight: bold;
+			font-family: sans-serif;
+			padding: 10px;
+			margin: 0px;
+
+		}
+		div.sitename {
+			float: top;
+			margin-top: -20px;
+		}
+		
+		a {
+			color: #034569;
+			text-decoration: none;
+		}
+		a.navigation {
+			color:black;
+			text-decoration: none;
+		}
+		ul.navbar {
+    		margin: 0; 
+    		padding: 0px; 
+			font-size: 10px;
+  		 }
+		ul.navbar li {
+   			display: inline;
+    		margin-right: 0px; 
+			background:floralwhite;
+    		padding: 7px; 
+			font-size: 15px;
+	
+  		}
+		div.autorisation {
+			float: right;
+			font-size: 20px;
+			margin-top:-75px;
+		}
+		footer.podval {
+			position: fixed;
+    		left: 0; 
+			bottom: 0;
+    		padding: 10px; 
+    		width: 100%; 
+			background: #3c9dd0;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		ul.podval {
+			margin:0;
+		}
+		ul.podval li {
+			display: inline;
+    		margin-left: auto;
+			margin-right: auto;
+			position:relative;
+			padding: 500px;
+		}
+</style> -->
 </head>
 <body>
-	<header>
-		<div><a href="/"><h1>Сайт<h1></a></div>
+	<header class="site">
+		<div class='sitename'><a href="/"><h1>Сайт<h1></a></div>
 		<div>
 			{% if 'forum' in request.path %}
-        <form action="{% url 'forum' %}">
-        <input name="search" type="search" placeholder="Search" aria-label="Search">
-        <input type="submit" value="Поиск">
-
-        </form>
-
-        {% endif %}
+        		<form action="{% url 'forum' %}">
+       			<input name="search" type="search" placeholder="Search" aria-label="Search">
+        		<input type="submit" value="Поиск">
+        	</form>
+        	{% endif %}
+		</div>
+		<div>
+			{% if 'materials' in request.path %}
+        		<form action="{% url 'search' %}">
+       			<input name="search" type="search" placeholder="Search" aria-label="Search">
+        		<input type="submit" value="Поиск">
+        	</form>
+        	{% endif %}
 		</div>
 		{% if user.is_authenticated %}
 		<div><a href="{% url 'userprofile'%}">{{user.username}}</a></div>
@@ -29,32 +98,34 @@
 		    <input type="hidden">
 		</form>
 		{% else %}
-		<div><a href="{% url 'login' %}">Вход</a></div>
-		<div><a href="{% url 'register' %} ">Регистрация</a></div>
+		<div class='autorisation'>
+			<div><a href="{% url 'login' %}">Вход</a></div>
+			<div><a href="{% url 'register' %} ">Регистрация</a></div>
+		</div>
 		{% endif %}
 		<div>
 			<div>
 				<div>
-					<ul>
+					<ul class="navbar">
 						<li><a href="{% url 'materials' %}">Материалы</a></li>
 						<li><a href="/">Главная</a></li>
 						<li><a href="{% url 'forum' %}">Обсуждение</a></li>
+						<li><a href="{% url 'tasks' %}">Решить задачу</a></li>
 					</ul>
 				</div>
 				<div class="reshalka">
-					<ul><li><a href="{% url 'tasks' %}">Решить задачу</a></li></ul>
+					
 				</div>
 			</div>
 		</div>
-
-
 	</header>
 </body>
 	{% block content %}
 	{% endblock %}
-<footer>
-	<ul class="">
-		<li class='left'><a href="/">Навигация</a></li>
-		<li class='right'><a href="/">Поддержать проект</a></li>
+<footer class="podval">
+	<!--а нужен ли нам футер--> 
+	<ul class="podval">
+		<li class='left'><a class='navigation' href="/">Навигация</a></li>
+		<li class='right'><a class='navigation' href="/">Поддержать проект</a></li>
 	</ul>
 </footer>

@@ -48,7 +48,9 @@ def add(request):
 
 def details(request,post_id):
     post = get_object_or_404(Post,pk=post_id)
-    comments = Comment.objects.all()
+    comments = Comment.objects.filter(post_id=post.id)
+
+
 
     return render(request,'forum/details.html',{'post':post,'comments':comments})
 
