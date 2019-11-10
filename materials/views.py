@@ -1,6 +1,4 @@
 from django.shortcuts import render
-import urllib
-from .urls import urlpatterns
 from bs4 import BeautifulSoup
 
 # Create your views here.
@@ -19,7 +17,6 @@ def dynamics(request):
 def search(request): #скачиваю интернет! точнее собираюсь скачять, потом доделаю
     #суть в том, что я упарываюсь и прогоняю с помощью bs4 каждый html и возвращаю тот, в котором содержится поисковой запрос
     #возможно, это абсурдно
-    #да не торч я
     search_query = request.GET.get('search', '')
     mechanics = render(request,'materials/physics/mechanics/mechanics.html') 
 

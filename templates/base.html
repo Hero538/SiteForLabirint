@@ -5,71 +5,6 @@
 <meta charset="UTF-8">
 <title>Сайтнейм</title>
 <script src="https://kit.fontawesome.com/c04fd68ff8.js" crossorigin="anonymous"></script>
-<!--<style type="text/css">
-		body {
-			margin: 0;
-			padding: 0;
-		}
-		header.site {
-			background-color:#3c9cd0d8;
-			font-size: 20px;
-			font-weight: bold;
-			font-family: sans-serif;
-			padding: 10px;
-			margin: 0px;
-
-		}
-		div.sitename {
-			float: top;
-			margin-top: -20px;
-		}
-		
-		a {
-			color: #034569;
-			text-decoration: none;
-		}
-		a.navigation {
-			color:black;
-			text-decoration: none;
-		}
-		ul.navbar {
-    		margin: 0; 
-    		padding: 0px; 
-			font-size: 10px;
-  		 }
-		ul.navbar li {
-   			display: inline;
-    		margin-right: 0px; 
-			background:floralwhite;
-    		padding: 7px; 
-			font-size: 15px;
-	
-  		}
-		div.autorisation {
-			float: right;
-			font-size: 20px;
-			margin-top:-75px;
-		}
-		footer.podval {
-			position: fixed;
-    		left: 0; 
-			bottom: 0;
-    		padding: 10px; 
-    		width: 100%; 
-			background: #3c9dd0;
-			font-family: Arial, Helvetica, sans-serif;
-		}
-		ul.podval {
-			margin:0;
-		}
-		ul.podval li {
-			display: inline;
-    		margin-left: auto;
-			margin-right: auto;
-			position:relative;
-			padding: 500px;
-		}
-</style> -->
 </head>
 <body>
 	<header class="site">
@@ -77,14 +12,6 @@
 		<div>
 			{% if 'forum' in request.path %}
         		<form action="{% url 'forum' %}">
-       			<input name="search" type="search" placeholder="Search" aria-label="Search">
-        		<input type="submit" value="Поиск">
-        	</form>
-        	{% endif %}
-		</div>
-		<div>
-			{% if 'materials' in request.path %}
-        		<form action="{% url 'search' %}">
        			<input name="search" type="search" placeholder="Search" aria-label="Search">
         		<input type="submit" value="Поиск">
         	</form>
