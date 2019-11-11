@@ -8,9 +8,12 @@ class Post(models.Model):
     pub_date = models.DateTimeField()
     body = models.TextField()
     image = models.ImageField(upload_to='photos/%Y/%m/%d/',blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='author')
     votes_total = models.IntegerField(default=0)
+    pluses = models.ManyToManyField(User,blank=True,related_name='pluses')
+    minuses = models.ManyToManyField(User,blank=True,related_name='minuses')
     is_published = models.BooleanField(default=True)
+
     def pub_date_pretty(self):
         return self.pub_date.strftime('%b %e %Y')
 

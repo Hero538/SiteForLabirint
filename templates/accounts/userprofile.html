@@ -5,7 +5,9 @@
 <form method="post" >
     <span><a href="">Профиль</a></span>
         <ul>
-	        <li class='avka'><img src="{{MEDIA_URL}}{{ profile.avatar }}">  </li>
+
+	        <li class='avka'><img src="{{MEDIA_URL}}{{ profile.avatar }}" height="100" width="150">  </li>
+
 	        <li>Никнейм:{{ profile.user.username }} </li>
 	        <li>О пользователе:{{ profile.about }} </li>
             <a href="{% url 'gotoedit' %}">Редактировать</a>
