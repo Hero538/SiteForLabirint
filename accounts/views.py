@@ -86,14 +86,15 @@ def edit(request):
         if request.POST['about']:
                 profile = Profile.objects.get(user_id=request.user.id)
                 profile.about = request.POST['about']
-                #profile.user_id = request.user.id
-                profile.save()
-                return redirect('userprofile')
-        if request.POST['about'] and request.POST['image']:
-                profile = Profile.objects.get(user_id=request.user.id)
-                profile.avatar = request.POST['image']
+
+                try:
+                    profile.avatar = request.FILES['image']
+                except:
+                    pass
+                else:
+                    profile.avatar = request.FILES['image']
                 #profile.id = request.user.id
-                profile.about = request.POST['about']
+
                 profile.save()
                 return redirect('userprofile')
 

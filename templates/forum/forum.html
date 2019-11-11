@@ -6,7 +6,7 @@
 <div><a href="{% url 'add' %}">Создать новый пост.</a></div>
 		{% for post in posts %}
         <div class="row pt-3">
-            <div class="col-2" onclick="window.location='{% url 'details' post.id %}'" style="cursor: pointer"><img src="{{post.image }}" class="img-fluid" /></div>
+            <div class="col-2" onclick="window.location='{% url 'details' post.id %}'" style="cursor: pointer"><img src="{{post.image.url }}" class="img-fluid" /></div>
             <div class="col-6" onclick="window.location='{% url 'details' post.id %}'" style="cursor: pointer"><a href="{% url 'details' post.id %}" ><h1>{{ post.title }}</h1></a><p>{{ post.summary }}</p></div>
 
             <div class="col-4" onclick="window.location='{% url 'details' post.id %}'" style="cursor: pointer"><a href="javascript:{document.getElementById('upvote').submit()}"><i class="fas fa-arrow-up"></i></a>{{ post.votes_total }}<a href="javascript:{document.getElementById('downvote').submit()}"><i class="fas fa-arrow-down"></i><span class="oi oi-caret-top"></a>
