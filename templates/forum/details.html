@@ -12,7 +12,7 @@
 <br>
 <div class="row">
   <div class="col-8">
-    <img src="{{ post.title }}" class="img-fluid"  />
+    <img src="{{MEDIA_URL}}{{post.image }}" class="img-fluid"  />
   </div>
   <div class="col-4">
     <a href="javascript:{document.getElementById('upvote').submit()}"><i class="fas fa-arrow-up"></i></a>{{ post.votes_total }}<a href="javascript:{document.getElementById('downvote').submit()}"><i class="fas fa-arrow-down"></i><span class="oi oi-caret-top"></a>

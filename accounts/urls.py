@@ -9,4 +9,4 @@ urlpatterns = [
     path('profile/gotoedit', views.gotoedit, name='gotoedit'),
     path('profile/edit', views.edit, name='edit'),
 
-]
+] 

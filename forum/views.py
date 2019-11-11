@@ -26,15 +26,12 @@ def add(request):
             post = Post()
             post.title = request.POST['title']
             post.body = request.POST['body']
-            post.pub_date = timezone.datetime.now()
-            post.user = request.user
-            post.save()
-            return redirect('/forum/' + str(post.id))
-        if request.POST['title'] and request.POST['body'] and request.POST['image']:
-            post = Post()
-            post.title = request.POST['title']
-            post.image = request.POST['image']
-            post.body = request.POST['body']
+            try:
+                 post.image = request.FILES['image']
+            except:
+                 pass
+            else:
+                 post.image = request.FILES['image']
             post.pub_date = timezone.datetime.now()
             post.user = request.user
             post.save()
@@ -48,7 +45,9 @@ def add(request):
 
 def details(request,post_id):
     post = get_object_or_404(Post,pk=post_id)
-    comments = Comment.objects.all()
+    comments = Comment.objects.filter(post_id=post.id)
+
+
 
     return render(request,'forum/details.html',{'post':post,'comments':comments})
 
