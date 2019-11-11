@@ -52,31 +52,58 @@ def details(request,post_id):
     return render(request,'forum/details.html',{'post':post,'comments':comments})
 
 @login_required(login_url='/accounts/signup')
-def upvote(request,post_id):               #Это надо исправить 
-    if post_id in request.COOKIES:          
-        return redirect('/forum/' + post_id)
-    else:
-        if request.method == 'POST':
-            post = get_object_or_404(Post,pk=post_id)
-            post.votes_total +=1
+def upvote(request,post_id):               #Спустя 43 столетия, у меня получился говнокод
+                                           #Вроде как работает,чекнул с разными пользователями ( на удивление) тоже сработало!
+    if request.method == 'POST':
+
+        post = get_object_or_404(Post, pk=post_id)
+        post_plus_reactions = post.pluses.all()
+        post_minus_reactions = post.minuses.all()
+
+        if (request.user not in post_plus_reactions) or (request.user in post_minus_reactions):
+
+            if request.user in post_minus_reactions:
+                post.minuses.remove(request.user)
+            else:
+                post.pluses.add(request.user)
+
+
+            post.votes_total += 1
             post.save()
-            response = redirect('/forum/' + post_id)
-            response.set_cookie(post_id, 'voted')
-            return response
+        return redirect('/forum/' + post_id)
+        #response.set_cookie(post_id, 'voted')
+        #return response
+
 
 
 @login_required(login_url='/accounts/signup')
-def downvote(request,post_id):      #Тоже надо исправить // ок пока так, оставим этот способ, если ничего не придумается больше
-    if post_id in request.COOKIES:          
-        return redirect('/forum/' + post_id)
-    else:
-        if request.method == 'POST':
-            post = get_object_or_404(Post,pk=post_id)
+def downvote(request,post_id):
+    if request.method == 'POST':
+
+        post = get_object_or_404(Post, pk=post_id)
+        post_plus_reactions = post.pluses.all()
+        post_minus_reactions = post.minuses.all()
+
+        if (request.user not in post_minus_reactions) or (request.user in post_plus_reactions):
+
+            if request.user in post_plus_reactions:
+                post.pluses.remove(request.user)
+            else:
+                post.minuses.add(request.user)
             post.votes_total -=1
             post.save()
-            response = redirect('/forum/' + post_id)
-            response.set_cookie(post_id, 'voted')
-            return response #так получается, если ты однажды проголосовал, назад дороги нет 
+        return redirect('/forum/' + post_id)
+
+    # if post_id in request.COOKIES:
+    #     return redirect('/forum/' + post_id)
+    # else:
+    #     if request.method == 'POST':
+    #         post = get_object_or_404(Post,pk=post_id)
+    #         post.votes_total -=1
+    #         post.save()
+    #         response = redirect('/forum/' + post_id)
+    #         response.set_cookie(post_id, 'voted')
+    #         return response #так получается, если ты однажды проголосовал, назад дороги нет
 
 
 
@@ -85,7 +112,7 @@ def downvote(request,post_id):      #Тоже надо исправить // о�
 def add_comment(request, post_id):
     #form = CommentForm(request.POST)
     post = get_object_or_404(Post, id=post_id)
-                                                #Кривая хурма ,надо будет исправить... Пока что так
+
     if True:
         comment = Comment()
         comment.path = []
