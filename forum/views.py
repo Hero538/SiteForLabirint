@@ -67,20 +67,6 @@ def upvote(request,post_id):               #Спустя 43 столетия, у
             else:
                 post.pluses.add(request.user)
 
-<<<<<<< HEAD
-@login_required(login_url='/accounts/signup')
-def downvote(request,post_id):      #Тоже надо исправить // ок пока так, оставим этот способ, если ничего не придумается больше
-    if post_id in request.COOKIES:          
-        return redirect('/forum/' + post_id)
-    else:
-        if request.method == 'POST':
-            post = get_object_or_404(Post,pk=post_id)
-            post.votes_total -=1
-            post.save()
-            response = redirect('/forum/' + post_id)
-            response.set_cookie(post_id, 'voted')
-            return response #так получается, если ты однажды проголосовал, назад дороги нет 
-=======
 
             post.votes_total += 1
             post.save()
@@ -118,7 +104,6 @@ def downvote(request,post_id):
     #         response = redirect('/forum/' + post_id)
     #         response.set_cookie(post_id, 'voted')
     #         return response #так получается, если ты однажды проголосовал, назад дороги нет
->>>>>>> 8ec928ee447c0659d07f4efe82d7cb32252bfdfa
 
 
 
