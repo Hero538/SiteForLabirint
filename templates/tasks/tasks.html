@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'alerts/alert.html' %} 
-<div class="headline"><h2>Решение физической задачи<h2></div>
+<div class="headline"><h2>Решение физической задачи</h2></div>
 	<form action="{% url 'tasks'%}" method="POST">
 	{% csrf_token %}
 		<div class="form-group">
 			<label for="variable">Что дано?</label>
-			<label for="variable">Введите известные вам переменные из существующих разделов (нахождение силы, пути или напряжения</label> 
+			<label for="variable">Введите известные вам переменные из существующих разделов (нахождение силы, пути или напряжения)</label> 
 			<br>
 				<input type="text" placeholder='F' name="varname" class="" required list='vars'>
 					<datalist id='vars'>
@@ -31,7 +31,7 @@
 		  <label for="variable">Что найти?</label>
 		  <input type="text"  placeholder='a' name="varfind" class="" required list='vars'>
 		</div>
-		<input type="submit" value="" class="btn btn-secondary btn-block">
+		<input type="submit" value="Решить" class="btn btn-secondary btn-block">
 	</form>
 	<div class="conclution"><h3>ответ: {{tasks}}</h3></div>
 </div>

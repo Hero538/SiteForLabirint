@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'alerts/alert.html' %}
-<div class="headline"><h2>перевод в n-ную систему счисления<h2></div>
-<div class="vars"><h3>что дано?<h3>
+<div class="headline"><h2>перевод в n-ную систему счисления</h2></div>
 	<form action="{% url 'informatics_tasks'%}" method="POST">
 	{% csrf_token %}
 		<div class="form-group">
 		  <label>Введите число</label> 
-		  <input type="number" name="n" class="" required>
-		  <label>Какая система?</label> 
-		  <input type="number" name="num" class="" required>
+		  <input type="number" placeholder='10' name="n" class="" required>
+		  <br>
+		  <label>В какую систему перевести?</label> 
+		  <input type="number" placeholder='2' name="num" class="" required>
 		</div>
-		<input type="submit" value="" class="btn btn-secondary btn-block">
+		<input type="submit" value="Решить" class="btn btn-secondary btn-block">
   	</form>
 	<div class="answer"><h3>ответ: {{answer}}</h3></div>
 </div>
