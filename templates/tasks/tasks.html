@@ -7,15 +7,29 @@
 		<div class="form-group">
 			<label for="variable">Что дано?</label>
 			<label for="variable">Введите известные вам переменные из существующих разделов (нахождение силы, пути или напряжения</label> 
-			<input type="text" name="varname" class="" required>
+			<br>
+				<input type="text" placeholder='F' name="varname" class="" required list='vars'>
+					<datalist id='vars'>
+						<option>F</option>
+						<option>m</option>
+						<option>a</option>
+						<option>S</option>
+						<option>t</option>
+						<option>v</option>
+						<option>U</option>
+						<option>I</option>
+						<option>R</option>
+					</datalist>
+			<span>=</span>
 			<input type="number" name="varcount" class="" required>
-			<input type="text" name="varname2" class="" required>
+			<br>
+			<input type="text"  placeholder='m' name="varname2" class="" required list='vars'>
+			<span>=</span>
 			<input type="number" name="varcount2" class="" required>
 		</div>
 		<div class="form-group">
 		  <label for="variable">Что найти?</label>
-		  <input type="text" name="varfind" class="" required>
-		  <div type="text" name="varfindcount" class="" required>
+		  <input type="text"  placeholder='a' name="varfind" class="" required list='vars'>
 		</div>
 		<input type="submit" value="" class="btn btn-secondary btn-block">
 	</form>
