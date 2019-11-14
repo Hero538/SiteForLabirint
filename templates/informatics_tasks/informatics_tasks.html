@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'alerts/alert.html' %}
-<div class="headline"><h2>перевод в n-ную систему счисления</h2></div>
+<div class="headline"><h2>Перевод в n-ную систему счисления</h2></div>
 	<form action="{% url 'informatics_tasks'%}" method="POST">
 	{% csrf_token %}
 		<div class="form-group">

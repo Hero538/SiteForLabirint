@@ -2,7 +2,7 @@
 {% block content %}
 {% include 'alerts/alert.html' %} 
 <div class="headline"><h2>Перестановки, сочетания, замещения</h2></div>
-<div ><h3>что дано?<h3>
+<div ><h3>Что дано?<h3>
 	<form action="{% url 'maths_tasks'%}" method="POST">
 		{% csrf_token %}
 		<div class="form-group">
