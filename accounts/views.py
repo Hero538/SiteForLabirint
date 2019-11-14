@@ -86,7 +86,6 @@ def edit(request):
         if request.POST['about']:
                 profile = Profile.objects.get(user_id=request.user.id)
                 profile.about = request.POST['about']
-
                 try:
                     profile.avatar = request.FILES['image']
                 except:
@@ -94,7 +93,6 @@ def edit(request):
                 else:
                     profile.avatar = request.FILES['image']
                 #profile.id = request.user.id
-
                 profile.save()
                 return redirect('userprofile')
 

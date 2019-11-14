@@ -5,7 +5,7 @@ from django.contrib import messages
 
 # Create your views here.
 main_variables=['F','S','U'] #))
-other_vars=['a','m','t','v'] 
+other_vars=['a','m','t','v', 'I', 'R'] 
 def tasks(request):
     answer=None
     if request.method == 'POST':

@@ -7,7 +7,6 @@
 <script src="https://kit.fontawesome.com/c04fd68ff8.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
 	<header class="site">
 		<div class='sitename'><a href="/"><h1>Сайт<h1></a></div>
 		<div>
@@ -17,7 +16,6 @@
         		<input type="submit" value="Поиск">
         	</form>
         	{% endif %}
-
 		</div>
 		{% if user.is_authenticated %}
 		<div><a href="{% url 'userprofile'%}">{{user.username}}</a></div>
@@ -27,12 +25,10 @@
 		    <input type="hidden">
 		</form>
 		{% else %}
-
 		<div class='autorisation'>
 			<div><a href="{% url 'login' %}">Вход</a></div>
 			<div><a href="{% url 'register' %} ">Регистрация</a></div>
 		</div>
-
 		{% endif %}
 		<div>
 			<div>
@@ -49,18 +45,14 @@
 				</div>
 			</div>
 		</div>
-
-
 	</header>
 </body>
 	{% block content %}
 	{% endblock %}
-
 <footer class="podval">
 	<!--а нужен ли нам футер--> 
 	<ul class="podval">
 		<li class='left'><a class='navigation' href="/">Навигация</a></li>
 		<li class='right'><a class='navigation' href="/">Поддержать проект</a></li>
-
 	</ul>
 </footer>

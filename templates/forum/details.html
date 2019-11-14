@@ -2,7 +2,10 @@
 {% block content %}
 {% include 'alerts/alert.html' %}
 <div class="row">
-
+  <div class="col-2">
+    <img src="{{ product.icon.url }}" class="img-fluid" />
+  </div>
+  <div class="col-10">
     <a href=""><h1>{{ post.title }}</h1></a>
   </div>
 </div>
