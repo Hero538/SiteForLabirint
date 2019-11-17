@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'alerts/alert.html' %} 
+<div class="wrapper row3">
+<div class="hoc container clear">
+<div class="content three_quarter">
 <div class="headline"><h2>Перестановки, сочетания, замещения</h2></div>
 <div ><h3>Что дано?<h3>
 	<form action="{% url 'maths_tasks'%}" method="POST">
@@ -13,8 +16,12 @@
 			<input type="number" name="n" placeholder="n" required>
 			<input type="number" name="k" placeholder="k" required>
 		</div>
+		<br>
 		<input type="submit" value="Решить" class="btn btn-secondary btn-block">
 	</form>
-	<div class=""><h3>ответ: {{maths_tasks}}</h3></div>
+	<br>
+	<div class=""><h2>ответ: {{maths_tasks}}</h2></div>
+</div>
+</div>
 </div>
 {% endblock %}

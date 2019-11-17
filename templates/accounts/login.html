@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'alerts/alert.html' %}
+<div class="wrapper row3">
+<div class="hoc container clear">
+<div class="content three_quarter">
 <form action="{% url 'login'%}" method="POST">
   {% csrf_token %}
   <div>
@@ -11,6 +14,9 @@
     <label for="password2">Password</label>
     <input type="password" name="password" required>
   </div>
-  <input type="submit" value="Login">
+  <input type="submit" value="Login" class="btn btn-secondary btn-block">
 </form>
+</div>
+</div>
+</div>
 {% endblock %}

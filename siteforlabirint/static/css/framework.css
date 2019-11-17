@@ -31,7 +31,7 @@ html, body{margin:0; padding:0; font-size:14px; line-height:1.6em;}
 .bgded{background-position:top center; background-repeat:no-repeat; background-size:cover;}
 .circle{border-radius:50%; background-clip:padding-box;}
 
-.btn{display:inline-block; padding:15px 25px 17px; text-transform:uppercase; border:1px solid;}
+.btn{display:inline-block; padding:15px 25px 17px; text-transform:uppercase; }
 .btn.medium{padding:10px 20px 12px;}
 .btn.small{padding:8px 18px 10px; text-transform:none;}
 
@@ -44,7 +44,7 @@ a{outline:none; text-decoration:none;}
 .fl_left, .imgl{float:left;}
 .fl_right, .imgr{float:right;}
 
-img{width:auto; max-width:100%; height:auto; margin:0; padding:0; border:none; line-height:normal; vertical-align:middle;}
+img{width:150px; max-width:50%; height:100px; margin:0; padding:0; border:none; line-height:normal; vertical-align:middle;}
 .imgl{margin:0 15px 10px 0; clear:left;}
 .imgr{margin:0 0 10px 15px; clear:right;}
 
@@ -99,7 +99,6 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
 .one_third{width:31.28834355828221%;}
 .one_half, .two_quarter{width:48.46625766871166%;}
 .two_third{width:65.6441717791411%;}
-.three_quarter{width:74.23312883435584%;}
 
 
 /* Spacing

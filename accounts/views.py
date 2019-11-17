@@ -4,10 +4,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from django.db import IntegrityError
+#from .forms import User, UserForm, ProfileForm
+# Create your views here.
 def register(request):
     if request.method == 'POST':
-        #first_name = request.POST['first_name']
-        #last_name = request.POST['last_name']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
@@ -19,6 +21,7 @@ def register(request):
             else:
                 if User.objects.filter(email=email).exists():
                     messages.error(request, 'Эта почта уже используется')
+                    return redirect('register')
                 else:
                     about = 'Im a user of this cool forum'
                     user = User.objects.create_user(username=username, password=password, email=email,first_name=first_name, last_name=last_name)
@@ -40,10 +43,13 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'Вы вошли!')
+
+
             return redirect('userprofile')
         else:
             messages.error(request, 'Неверные данные')
             return redirect('login')
+
     else:
         return render(request, 'accounts/login.html')
 
@@ -56,15 +62,25 @@ def logout(request):
 @login_required(login_url='/accounts/signup')
 def userprofile(request):
     try:
-        profile = Profile.objects.create(user_id=request.user.id) 
+        profile = Profile.objects.create(user_id=request.user.id) #Пока что через try ,exceptы
         profile.save()
         profile = get_object_or_404(Profile, pk=request.user.profile.id)
+    #avatar = request.POST['avatar']
     except IntegrityError:
         profile = get_object_or_404(Profile, pk=request.user.profile.id)
+
+
+    # , {'profile': profile, 'user': user}
     return render(request, 'accounts/userprofile.html',{'profile':profile})
 
 def gotoedit(request):
-    return render(request,'accounts/useredit.html') 
+    return render(request,'accounts/useredit.html') #ненужная функция но без нее никак
+# def setprofile(request):
+# #     about = request.POST['about'] # Стремный способ // ну ок
+# #     avatar = request.POST['avatar']
+# #     profile = Profile.objects.create(about=about, avatar=None, user_id=request.user.id)
+# #     profile.save()
+# #     return redirect('login')
 @login_required(login_url='/accounts/signup')
 def edit(request):
     if request.method == 'POST':
@@ -77,10 +93,6 @@ def edit(request):
                     pass
                 else:
                     profile.avatar = request.FILES['image']
+                #profile.id = request.user.id
                 profile.save()
                 return redirect('userprofile')
-
-
-
-
-

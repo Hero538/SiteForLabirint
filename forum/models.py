@@ -31,21 +31,9 @@ class Comment(models.Model):
     path = ArrayField(models.IntegerField())
     post_id = models.ForeignKey(Post,on_delete=models.PROTECT)
     user_id = models.ForeignKey(User,on_delete=models.PROTECT)
-    content = models.TextField('Комментарий')
+    content = models.TextField('Комментарий ')
     pub_date = models.DateTimeField('Дата комментария', default=timezone.now)
+    #username = models.ManyToManyField()
 
-    def __str__(self):
-        return self.content[0:200]
-
-    def get_offset(self):
-        level = len(self.path) - 1
-        if level > 5:
-            level = 5
-        return level
-
-    def get_col(self):
-        level = len(self.path) - 1
-        if level > 5:
-            level = 5
-        return 12 - level
+ 
 

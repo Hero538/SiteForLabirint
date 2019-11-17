@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'alerts/alert.html' %}
-<div class="row">
-  <div class="col-2">
-    <img src="{{ product.icon.url }}" class="img-fluid" />
-  </div>
+<div class="wrapper row3">
+<div class="hoc container clear">
+<div class="content three_quarter">
   <div class="col-10">
     <a href=""><h1>{{ post.title }}</h1></a>
   </div>
-</div>
 <br>
-<div class="row">
+<div class="">
+<div class="">
   <div class="col-8">
     <img src="{{ MEDIA_URL }}{{ post.image }}" class="img-fluid"  />
   </div>
@@ -18,8 +17,8 @@
     <a href="javascript:{document.getElementById('upvote').submit()}"><i class="fas fa-arrow-up"></i></a>{{ post.votes_total }}<a href="javascript:{document.getElementById('downvote').submit()}"><i class="fas fa-arrow-down"></i><span class="oi oi-caret-top"></a>
   </div>
 </div>
-
-<div class="row pt-2">
+<div class=''>
+<div class="">
   <div class="col-4">
     <h4><span class="oi oi-magnifying-glass"></span> Created by {{ post.user }}</h4>
   </div>
@@ -27,8 +26,7 @@
     <h4><span class="oi oi-clock"></span> {{ post.pub_date_pretty }}</h4>
   </div>
 </div>
-
-<div class="row">
+<div class="">
   <div class="col-8">
     <p>{{ post.body }}</p>
   </div>
@@ -41,32 +39,29 @@
   {% csrf_token%}
   <input type="hidden">
 </form>
-<h2>Комментарии</h2>
+</div>
+<div><h2>Комментарии</h2>
 {% csrf_token%}
     {% for comment in comments %}
         <a name="comment-{{ comment.id }}"></a>
-        <div class="row" id="{{ comment.id }}">
-            <div class="col-md-{{ comment.get_col }} col-md-offset-{{ comment.get_offset }}">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+        <div>
+            <div class="">
+                <div class="">
                         <strong>{{ comment.user_id.username }}</strong>&nbsp;&nbsp;
                         {{ comment.pub_date }}
-                        <a href="#comment-{{ comment.id }}">#</a>
+                        <!--<a href="#comment-{{ comment.id }}">{{  comment.user_id }}</a>-->
                     </div>
-                    <div class="panel-body">
-                        <div>{{ comment.content|safe }}</div>
-                        {% if form %}
-                        <a class="btn btn-default btn-xs pull-right" onclick="return show_comments_form({{ comment.id }})">Ответить</a>
-                        {% endif %}
-                    </div>
+                <div>
+                    <div>{{ comment.content|safe }}</div>
+                   <!--<a class="btn btn-default" onclick="return show_comments_form({{ comment.id }})">Ответить</a>-->
                 </div>
             </div>
-        </div>
+          </div>
     {% endfor %}
     {% if user.is_authenticated %}
-        <form id="comment_form" action="{% url 'add_comment' post.id %}" method="post">
+        <form id="" action="{% url 'add_comment' post.id %}" method="post">
         {% csrf_token %}
-            <p><input type="text" name="comment" value="Комментарий" /></p>
+            <p><input  class="input" type="text" name="comment" value="Комментарий" /></p>
             <button type="submit" class="btn btn-primary">Комментировать</button>
         </form>
     {% else %}
@@ -78,5 +73,9 @@
                 Только авторизованные пользователи могут оставлять комментарии.<br />
             </div>
         </div>
+      </div>
+      </div>
+  </div>
+</div>
     {% endif %}
 {% endblock %}

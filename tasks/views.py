@@ -4,14 +4,13 @@ from django.contrib import messages
 
 
 # Create your views here.
-main_variables=['F','S','U'] #))
+main_variables=['F','S','U'] 
 other_vars=['a','m','t','v', 'I', 'R'] 
 def tasks(request):
     answer=None
     if request.method == 'POST':
         varname = request.POST['varname'] 
         varcount= int(request.POST['varcount'])
-        #varname2 = request.POST['varname2']
         varcount2= int(request.POST['varcount2'])
         varfind= request.POST['varfind'] 
         try:

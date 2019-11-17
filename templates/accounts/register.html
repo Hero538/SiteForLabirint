@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'alerts/alert.html' %}
+<div class="wrapper row3">
+<div class="hoc container clear">
+<div class="content three_quarter">
 <form action="{% url 'register' %}" method="POST">
   {% csrf_token %}
+  <div ><label for="first_name">Имя</label><input type="text" name="first_name" class="form-control" required></div>
+  <div><label for="last_name">Фамилия</label><input type="text" name="last_name" required></div>
   <div><label for="username">Ник</label><input type="text" name="username"  required></div>
   <div ><label for="email">Email</label><input type="email" name="email"  required></div>
   <div><label for="password2">Пароль</label><input type="password" name="password"  required></div>
   <div><label for="password">Подтвердите пароль</label><input type="password" name="password2" required></div>
-  <input type="submit" value="Зарегистрироваться">
+  <br>
+  <input type="submit" value="Зарегистрироваться" class="btn btn-secondary btn-block">
 </form>
+</div>
+</div>
+</div>
 {% endblock %}

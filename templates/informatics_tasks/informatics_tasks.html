@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'alerts/alert.html' %}
+<div class="wrapper row3">
+<div class="hoc container clear">
+<div class="content three_quarter">
 <div class="headline"><h2>Перевод в n-ную систему счисления</h2></div>
 	<form action="{% url 'informatics_tasks'%}" method="POST">
 	{% csrf_token %}
@@ -14,5 +17,7 @@
 		<input type="submit" value="Решить" class="btn btn-secondary btn-block">
   	</form>
 	<div class="answer"><h3>ответ: {{answer}}</h3></div>
+</div>
+</div>
 </div>
 {% endblock %}

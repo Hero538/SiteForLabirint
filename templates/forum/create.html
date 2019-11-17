@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="wrapper row3">
+<div class="hoc container clear">
+<div class="content three_quarter">
 <h1>Create</h1>
 <form method="POST" action="{% url 'add' %}" enctype="multipart/form-data">
 {% csrf_token %}
     <div>Title:</div>
     <br>
+    <div one_third first>
     <input type="text" name="title">
+    <br>
     <div>Body:</div>
     <br>
     <input type="text" name="body">
@@ -15,6 +20,10 @@
     <input type="file" name="image">
     <br>
     <br>
-    <input class="btn btn-primary" type="submit" value="Add Product">
+    <input class="btn btn-primary" type="submit" value="Ок">
+    </div>
 </form>
+</div>
+</div>
+</div>
 {% endblock %}
