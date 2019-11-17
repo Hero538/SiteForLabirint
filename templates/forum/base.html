@@ -57,22 +57,11 @@
   <nav id="mainav" class="hoc clear">
     <ul class="clear">
       <li class="active"><a href="/">Главная</a></li>
-      <li><a href="{% url 'tasks' %}">Решалка</a></li>
+      <li><a href="{% url 'materials' %}">Решалка</a></li>
       <li><a href="{% url 'materials' %}">Материалы</a></li>
       <li><a href="{% url 'forum' %}">Общение</a></li>
     </ul>
   </nav>
 </div>
-
-<div class="wrapper row5">
-  <div id="social" class="hoc clear">
-    <div class="one_half first">
-    </div>
-    <div class="one_half">
-    </div>
-  </div>
-</div>
-</body>
-</html>
 {% block content %}
 {% endblock %}

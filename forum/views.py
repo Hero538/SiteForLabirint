@@ -52,8 +52,8 @@ def details(request,post_id):
     return render(request,'forum/details.html',{'post':post,'comments':comments})
 
 @login_required(login_url='/accounts/signup')
-def upvote(request,post_id):               #Спустя 43 столетия, у меня получился говнокод
-                                           #Вроде как работает,чекнул с разными пользователями ( на удивление) тоже сработало!
+def upvote(request,post_id):               
+                                        
     if request.method == 'POST':
 
         post = get_object_or_404(Post, pk=post_id)
@@ -71,9 +71,6 @@ def upvote(request,post_id):               #Спустя 43 столетия, у
             post.votes_total += 1
             post.save()
         return redirect('/forum/' + post_id)
-        #response.set_cookie(post_id, 'voted')
-        #return response
-
 
 
 @login_required(login_url='/accounts/signup')
@@ -94,25 +91,10 @@ def downvote(request,post_id):
             post.save()
         return redirect('/forum/' + post_id)
 
-    # if post_id in request.COOKIES:
-    #     return redirect('/forum/' + post_id)
-    # else:
-    #     if request.method == 'POST':
-    #         post = get_object_or_404(Post,pk=post_id)
-    #         post.votes_total -=1
-    #         post.save()
-    #         response = redirect('/forum/' + post_id)
-    #         response.set_cookie(post_id, 'voted')
-    #         return response #так получается, если ты однажды проголосовал, назад дороги нет
-
-
-
 @require_http_methods(["POST"])
 @login_required(login_url='/accounts/signup/')
 def add_comment(request, post_id):
-    #form = CommentForm(request.POST)
     post = get_object_or_404(Post, id=post_id)
-
     if True:
         comment = Comment()
         comment.path = []
@@ -121,7 +103,7 @@ def add_comment(request, post_id):
         comment.content = request.POST['comment']
         comment.user = request.user
         comment.save()
-    #вроде и так работает, хотя хз... 
+
         try:
            comm = get_object_or_404(Comment,pk=request.user.id)
            comment.path.extend(comm.path)
