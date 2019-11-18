@@ -3,7 +3,7 @@
 <div class="news" ><a href="/"></a>
         {% for tiding in tidings %}
 		<div class="image"><img src="{{ MEDIA_URL }}{{tiding.image}}"></div>
-		<div class="headline"><h2>{{tiding.title}}<h2></div>
+		<div class=""><h2>{{tiding.title}}<h2></div>
 		<div class="news_text"><h3>{{tiding.summary}}<h3></div>
 		<span><a href="{% url 'details_m' tiding.id %}">Читать полностью...</a></span>
         {% endfor %}

@@ -31,7 +31,7 @@ File: Layout CSS
 
 /* Header
 --------------------------------------------------------------------------------------------------------------- */
-#header{padding:30px 0;}
+#header{padding:10px 0;}
 
 #header #logo{margin-top:3px; font-variant:small-caps;}
 #header #logo h1{margin:0; padding:0; font-size:26px;}
@@ -97,10 +97,10 @@ File: Layout CSS
 
 /* Footer
 --------------------------------------------------------------------------------------------------------------- */
-#footer{padding:0 0 80px 0;}
+#footer{padding:0 0 10px 0;}
 
 #footer #cta{margin-bottom:80px; padding:30px; border-radius:0 0 5px 5px;}
-#footer #cta div{position:relative; min-height:40px; padding-left:60px;}
+#footer #cta div{position: absolute;; min-height:40px; padding-left:60px;}
 #footer #cta div:last-child{margin-bottom:0;}/* Used in small devices when elements stack */
 #footer #cta p{margin:0; padding:0;}
 #footer #cta div p:first-of-type{font-weight:700; text-transform:uppercase;}
@@ -272,7 +272,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#00BCDF;}
 
 /* Rows */
 .row0, .row0 a{color:#4A4A4A; background-color:#F2F1EE;}
-.row1{color:#FFFFFF; background-color:#3C4348;}
+.row1{color:#FFFFFF; background-color:#3C4348; }
 .row2{color:#FFFFFF; background-color:#212427;}
 .row3{color:#4A4A4A; background-color:#F2F1EE;}
 .row4{color:#EAEAEA; background-color:#3C4348;}
@@ -417,3 +417,4 @@ table a, #comments a{background-color:inherit;}
 	.font-x2{font-size:1.4rem;}
 	.font-x3{font-size:1.6rem;}
 }
+

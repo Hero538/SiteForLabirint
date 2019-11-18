@@ -5,7 +5,7 @@ from django.contrib import messages
 def fac(n):
     if n == 0:
         return 1
-    return fac(n-1) * n #непонятно зачем я писала функцию если есть встроенная но пусть побудет...
+    return fac(n-1) * n 
 
 def maths_tasks(request):
     if request.method == 'POST':

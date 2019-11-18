@@ -8,8 +8,6 @@ from django.db import IntegrityError
 # Create your views here.
 def register(request):
     if request.method == 'POST':
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
@@ -24,7 +22,7 @@ def register(request):
                     return redirect('register')
                 else:
                     about = 'Im a user of this cool forum'
-                    user = User.objects.create_user(username=username, password=password, email=email,first_name=first_name, last_name=last_name)
+                    user = User.objects.create_user(username=username, password=password, email=email)
                     user.save()
                     messages.success(request, 'Вы успешно зарегистрировались и можете войти')
                     return redirect('login')
@@ -62,7 +60,7 @@ def logout(request):
 @login_required(login_url='/accounts/signup')
 def userprofile(request):
     try:
-        profile = Profile.objects.create(user_id=request.user.id) #Пока что через try ,exceptы
+        profile = Profile.objects.create(user_id=request.user.id) 
         profile.save()
         profile = get_object_or_404(Profile, pk=request.user.profile.id)
     #avatar = request.POST['avatar']
@@ -74,13 +72,7 @@ def userprofile(request):
     return render(request, 'accounts/userprofile.html',{'profile':profile})
 
 def gotoedit(request):
-    return render(request,'accounts/useredit.html') #ненужная функция но без нее никак
-# def setprofile(request):
-# #     about = request.POST['about'] # Стремный способ // ну ок
-# #     avatar = request.POST['avatar']
-# #     profile = Profile.objects.create(about=about, avatar=None, user_id=request.user.id)
-# #     profile.save()
-# #     return redirect('login')
+    return render(request,'accounts/useredit.html') 
 @login_required(login_url='/accounts/signup')
 def edit(request):
     if request.method == 'POST':

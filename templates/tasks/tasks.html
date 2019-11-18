@@ -4,39 +4,31 @@
 <div class="wrapper row3">
 <div class="hoc container clear">
 <div class="content three_quarter">
-<div class="headline"><h2>Решение физической задачи</h2></div>
+<div class=""><h2>Решение физической задачи</h2></div>
 	<form action="{% url 'tasks'%}" method="POST">
 	{% csrf_token %}
 		<div class="">
-			<label for="variable">Что дано?</label>
+			<label for="variable"><strong>Что дано?</strong></label>
 			<label for="variable">Введите известные вам переменные из существующих разделов (нахождение силы, пути или напряжения)</label> 
 			<br>
-				<input type="text" placeholder='F' name="varname" class="" required list='vars'>
-					<datalist id='vars'>
-						<option>F</option>
-						<option>m</option>
-						<option>a</option>
-						<option>S</option>
-						<option>t</option>
-						<option>v</option>
-						<option>U</option>
-						<option>I</option>
-						<option>R</option>
-					</datalist>
+			<div class="inline"><input type="text" placeholder='F' name="varname" class="" required list='vars'>
 			<span>=</span>
-			<input type="number" name="varcount" class="" required>
+			<input type="number" name="varcount" class="" required></div>
 			<br>
-			<input type="text"  placeholder='m' name="varname2" class="" required list='vars'>
+			<div class="inline"><input type="text"  placeholder='m' name="varname2" class="" required list='vars'>
 			<span>=</span>
-			<input type="number" name="varcount2" class="" required>
+			<input type="number" name="varcount2" class="" required></div>
 		</div>
-		<div class="form-group">
-		  <label for="variable">Что найти?</label>
+		<br>
+		<div class="">
+		  <label for="variable"><strong>Что найти?</strong></label>
 		  <input type="text"  placeholder='a' name="varfind" class="" required list='vars'>
 		</div>
+		<br>
 		<input type="submit" value="Решить" class="btn btn-secondary btn-block">
 	</form>
 	<div class="conclution"><h3>ответ: {{tasks}}</h3></div>
+</div>
 </div>
 </div>
 </div>

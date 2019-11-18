@@ -4,11 +4,11 @@
 <div class="wrapper row3">
 <div class="hoc container clear">
 <div class="content three_quarter">
-<div class="headline"><h2>Перестановки, сочетания, замещения</h2></div>
-<div ><h3>Что дано?<h3>
+<div class=""><h2>Перестановки, сочетания, замещения</h2></div>
+<label for="variable"><strong>Что дано?</strong></label>
 	<form action="{% url 'maths_tasks'%}" method="POST">
 		{% csrf_token %}
-		<div class="form-group">
+		<div class="">
 			<label>Введите необходимое действие ('P','A','C')</label> 
 			<input type="text" placeholder='A' name="action" class="" required>
 			<br>

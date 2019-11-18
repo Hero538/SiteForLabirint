@@ -6,7 +6,7 @@ def somesystem(N, base):
     if not hasattr(somesystem, 'table'):        
         somesystem.table = '0123456789ABCDEF'       
     n, num = divmod(N, base)        
-    return somesystem(n, base) + somesystem.table[num] if n else somesystem.table[num] #оказывается, встроенная не работает, поэтому скоммуниздила переводчик систем счисления
+    return somesystem(n, base) + somesystem.table[num] if n else somesystem.table[num] 
 
 def informatics_tasks(request):
     if request.method == 'POST':

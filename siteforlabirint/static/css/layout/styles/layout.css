@@ -24,14 +24,14 @@ File: Layout CSS
 
 /* Top Bar
 --------------------------------------------------------------------------------------------------------------- */
-#topbar{padding:5px 0; font-size:12px;}
+#topbar{padding:5px 0; font-size:12px; height: 25px;}
 
 #topbar i{margin:0 5px 0 0; line-height:normal;}
 
 
 /* Header
 --------------------------------------------------------------------------------------------------------------- */
-#header{padding:30px 0;}
+#header{padding:10px 0;}
 
 #header #logo{margin-top:3px; font-variant:small-caps;}
 #header #logo h1{margin:0; padding:0; font-size:26px;}
@@ -97,7 +97,13 @@ File: Layout CSS
 
 /* Footer
 --------------------------------------------------------------------------------------------------------------- */
-#footer{padding:0 0 80px 0;}
+footer {
+	position: relative;
+  	left: 0;
+  	bottom: 0;
+  	width: 100%;;
+	background: #3c4348;
+  }  
 
 #footer #cta{margin-bottom:80px; padding:30px; border-radius:0 0 5px 5px;}
 #footer #cta div{position:relative; min-height:40px; padding-left:60px;}
@@ -156,7 +162,7 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #mainav .drop::after, #mainav li li .drop::after, #breadcrumb li a::after, .sidebar nav a::after{position:absolute; font-family:"FontAwesome"; font-size:10px; line-height:10px;}
 
 /* Top Navigation */
-#mainav{}
+#mainav{height: 49px;}
 #mainav ul{text-transform:uppercase;}
 #mainav ul ul{z-index:9999; position:absolute; width:180px; text-transform:none; font-weight:400;}
 #mainav ul ul ul{left:180px; top:0;}
@@ -257,7 +263,6 @@ td{border-width:0 1px;}
 
 /* Colours
 --------------------------------------------------------------------------------------------------------------- */
-body{color:#EAEAEA; background-color:#3C4348;}
 a{color:#00BCDF;}
 a:active, a:focus{background:transparent;}/* IE10 + 11 Bugfix - prevents grey background */
 hr, .borderedbox{border-color:#D7D7D7;}
@@ -378,7 +383,7 @@ table a, #comments a{background-color:inherit;}
 	#comments input[type="reset"]{margin-top:10px;}
 	.pagination li{display:inline-block; margin:0 5px 5px 0;}
 
-	#footer{}
+	#footer{color:inherit; background-color:#363D41;}
 
 	#copyright{}
 	#copyright p:first-of-type{margin-bottom:10px;}
@@ -422,3 +427,4 @@ table a, #comments a{background-color:inherit;}
 	width:200px;
 	height: 200px;
 }
+

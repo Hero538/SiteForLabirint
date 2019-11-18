@@ -2,33 +2,30 @@
 {% load static %}
 <html>
 <head>
+<script src="https://kit.fontawesome.com/c04fd68ff8.js" crossorigin="anonymous"></script>
 <title>Labirint</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="{%static 'css/layout/styles/layout.css'%}" rel="stylesheet" type="text/css" media="all">
 </head>
-<body id="top">
+<body id="">
 
 <div class="wrapper row0">
   <div id="topbar" class="hoc clear">
 
-    <div class="fl_left">
-    </div>
+
     {% if user.is_authenticated %}
-    <ul class="nospace inline pushright">
-        <li><i ></i> <a href="{% url 'userprofile'%}">{{user.username}}</a></li>
+        <i></i> <a href="{% url 'userprofile'%}">{{user.username}}</a>
         <a href="javascript:{document.getElementById('logout').submit()}">Выйти</a>
         <form action="{% url 'logout' %}" method="POST" id="logout">
             {% csrf_token %}
             <input type="hidden">
         </form>
-    </ul>
+  </div>
     {% else %}
 		<div class="fl_right">
-      <ul>
-			  <li><i class="fa fa-sign-in"></i><a href="{% url 'login' %}">Вход</a></li>
-        <li><i class="fa fa-user"></i><a href="{% url 'register' %} ">Регистрация</a></li>
-      </ul>
+			  <i class="fa fa-sign-in"></i><a href="{% url 'login' %}">Вход</a>
+        <i class="fa fa-user"></i><a href="{% url 'register' %} ">Регистрация</a>
 		</div>
 		{% endif %}
   </div>
@@ -39,9 +36,8 @@
       <h1><a href="/">Labirint</a></h1>
     </div>
     <div id="search" class="fl_right">
-        <div>
             {% if 'forum' in request.path %}
-              <form class="clear" method="post" action="{% url 'forum' %}">
+              <form action="{% url 'forum' %}">
                   <fieldset>
                       <legend>Search:</legend>
                       <input type="search" value="" placeholder="Поиск">
@@ -49,7 +45,6 @@
                     </fieldset> 
               </form>
             {% endif %}
-          </div>
     </div>
   </header>
 </div>
@@ -63,15 +58,7 @@
     </ul>
   </nav>
 </div>
-
-<div class="wrapper row5">
-  <div id="social" class="hoc clear">
-    <div class="one_half first">
-    </div>
-    <div class="one_half">
-    </div>
-  </div>
-</div>
+<footer class="footer"></footer>
 </body>
 </html>
 {% block content %}
