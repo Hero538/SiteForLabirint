@@ -15,7 +15,7 @@ def maths_tasks(request):
         try:
             answer=fac(n)//(fac(n-k)*fac(k))
         except (ZeroDivisionError, TypeError, NameError):
-            messages.error(request, 'Неверные данные')
+            answer = 'Введите верные данные!'
             return redirect('maths_tasks')
         else:
             if action=='P':
