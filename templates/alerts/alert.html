@@ -11,7 +11,7 @@
 {% if messages %}
     {% for message in messages %}
     <div class="alert alert-warning" role="alert">
-                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <strong>{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}</strong>
                     <div><strong>Ошибка</strong></div>
                 {% else %}
                     <p>{{ message.tags | title }}</p>
